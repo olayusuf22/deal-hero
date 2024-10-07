@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="" />
+    {% comment %} <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" /> {% endcomment %}
     <title>Deal Hero</title>
     {% block head %} 
     {% endblock %}
@@ -13,12 +13,17 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="" alt="TODO: Add Deal Hero Logo" />
+          {% comment %} <img src="{% static 'images/deal_hero_logo.png' %}" alt="Deal Hero Logo" /> {% endcomment %}
         </a>
       </div>
       <nav>
         <ul>
-          <li><a href="/about">About</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'about' %}">About</a></li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>
