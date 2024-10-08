@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+
+body{
+    height: 100vh;
+    margin 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    font-family: "League Spartan", sans-serif;
+    color: white;
+}
+
+h2{ 
+    font-size: 3svh;
+    font-weight: 700;
+}
+
+.wrapper{
+    border: solid black 2px;
+    height: 100%;
+    background-image: url('../images/BG\ 1\ -\ Sky.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .hero-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .subtitle{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-description{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-description h3{
+        background-color: rgba(69, 69, 69, 0.662);
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    #search-bar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
