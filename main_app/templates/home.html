@@ -1,16 +1,27 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
+{% extends 'base.html' %} 
+{% load static %} {% block head %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 {% endblock %} {% block content %}
 
-<section class="logo-container">
-  <div class="hero-container">
-    <img src="{% static 'images/splash.svg' %}" alt="The Hero Collector Hero" />
+<div class='wrapper'>
+  <div class="hero-header">
+    <div class='hero-image'>
+      <img src="{% static 'images/Deal-Hero-Logo.png' %}" alt="Hero Logo" />
+    </div>
+    <div class="subtitle">
+      <h2>Track</h2>
+      <h2>Compare</h2>
+      <h2>Save the Day</h2>
+    </div>
   </div>
-  <img
-    src="{% static 'images/logotype.svg' %}"
-    alt="Text reads: Hero Collector"
-  />
-</section>
+  <div class="hero-description">
+    <h3>Deal Hero helps you track prices for your favorite products across top retailers like Amazon, BestBuy, and Walmart.</h3>
+  </div>
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="Search for products..." />
+    <button id="search-button">Search</button>
+  </div>
+</div>
 
 {% endblock %}
 
