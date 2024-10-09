@@ -74,7 +74,7 @@ ul li a {
   }
   
   ul li a:hover {
-    transform:scale(2);
+    transform:scale(1.55);
     opacity:1;
     filter:blur(0);
     text-decoration:none;
