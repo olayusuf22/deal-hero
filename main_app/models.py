@@ -1,10 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    price_history = models.ForeignKey('PriceHistory', on_delete=models.CASCADE)
     category = models.CharField(max_length=255)
     product_url = models.URLField()
     image_url = models.URLField()   
@@ -19,7 +17,7 @@ class Product(models.Model):
         return self.name
     
 class PriceHistory(models.Model):
-    Product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -28,5 +26,13 @@ class PriceHistory(models.Model):
 class Retailer(models.Model):
     name = models.CharField(max_length=200)
     merchant_url = models.URLField()
+    def __str__(self):
+        return self.name
+    
+class Wishlist(models.Model):
+    name = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
