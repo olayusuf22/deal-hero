@@ -131,8 +131,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Add this variable to specify where successful logins should redirect to
-LOGIN_REDIRECT_URL = 'hero-index'
-
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Default primary key field type

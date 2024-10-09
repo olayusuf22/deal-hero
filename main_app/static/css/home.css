@@ -62,7 +62,7 @@ ul li a {
     position:relative;
     text-decoration:none;
     padding:5px;
-    font-size:18px;
+    font-size:2vh;
     color:#fff;
     transition:0.5s;
   }
@@ -97,12 +97,20 @@ ul li a {
   }
   
   ul li a:hover:before {
-    transition:transform 1.25s;
+    transition:transform 0.5s;
     transform-origin:left;
     transform:scaleX(1);
   }
 
-
+#logout-button {
+    background: none;
+    font-family: "League Spartan", sans-serif;
+    /* add a soft text shadow that lifts the text up from the page */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+    color: white;
+    font-weight: 600;
+    font-size: 2vh;
+}
 
 .wrapper {
     height: 100%;

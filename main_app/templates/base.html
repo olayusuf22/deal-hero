@@ -21,6 +21,14 @@
       <nav>
         <ul>
           {% if user.is_authenticated %}
+          <li>
+            <form method="POST" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button id="logout-button" class='nav-link' type="submit">
+                <img class='icon' src="{% static '/icons/Icon-6-Logout.png' %}">Logout
+              </button>
+            </form>
+          </li>
           {% else %}
             <li>
                 <a class='nav-link' href="{% url 'login' %}">
