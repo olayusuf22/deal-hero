@@ -1,10 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% comment %} <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    {% comment %} TODO: Add Favicon: <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" /> {% endcomment %}
     <title>Deal Hero</title>
     {% block head %} 
     {% endblock %}
@@ -12,19 +14,26 @@
   <body>
     <header>
       <div class="header-logo-container">
-        <a href="/">
-          {% comment %} <img src="{% static 'images/deal_hero_logo.png' %}" alt="Deal Hero Logo" /> {% endcomment %}
-        </a>
+          <a href="{% url 'home' %}">
+            <img src="{% static '/images/DH-Small-Logo-1.png' %}" alt="Deal Hero Logo" />
+          </a>
       </div>
       <nav>
         <ul>
           {% if user.is_authenticated %}
           {% else %}
-          <li><a href="{% url 'login' %}">Login</a></li>
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li>
+                <a class='nav-link' href="{% url 'login' %}">
+                    <img class='icon' src="{% static '/icons/Icon-1-Stars.png' %}">Login
+                </a>
+            </li>
+            <li>
+                <a class='nav-link' href="{% url 'signup' %}">
+                    <img class='icon' src="{% static '/icons/Icon-2-Mask.png' %}">Sign Up
+                </a>
+            </li>
           {% endif %}
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
+          {% comment %} <li><a class='nav-link' href="{% url 'about' %}">About</a></li> {% endcomment %}
         </ul>
       </nav>
     </header>
