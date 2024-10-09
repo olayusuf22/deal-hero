@@ -27,8 +27,11 @@
     <h3>Deal Hero helps you track prices for your favorite products across top retailers like Amazon, BestBuy, and Walmart.</h3>
   </div>
   <div id="search-bar">
-    <input type="text" id="search-input" placeholder="Search for products..." />
-    <button id="search-button">Search</button>
+    <form action="{% url 'product_search' %}" method="post">
+      {% csrf_token %}
+    <input name="query" type="text" id="search-input" placeholder="Search for products..." />
+    <button type="submit" id="search-button">Search</button>
+    </form>
   </div>
 </div>
 

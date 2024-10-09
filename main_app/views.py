@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import SignUpForm
+from django.http import HttpResponse
 
 # Create your views here.
 # main_app/views.py
@@ -31,3 +32,9 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+def product_search(request):
+    if request.method == 'POST':
+        query = request.POST.get('query')
+        return HttpResponse(f'You searched for: {query}')
+    return redirect('home')
