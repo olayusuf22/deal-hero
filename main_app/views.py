@@ -86,9 +86,42 @@ def product_search(request):
         # The best product is the first one in the sorted list.
         amz_best_product = amz_sorted_products[0]
 
+        ggl_payload = {
+            'source': 'google_shopping_search',
+            'domain': 'com',
+            'query': query,
+            'pages': 1,  # You can adjust pages based on your needs
+            'parse': True,
+            'context': [
+                {'key': 'sort_by', 'value': 'pd'},  # Sort by price descending (pd)
+                {'key': 'min_price', 'value': 20},  # Minimum price filter (example)
+            ]
+        }
+        ggl_response = requests.request(
+            'POST',
+            'https://realtime.oxylabs.io/v1/queries',
+            auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
+            json=ggl_payload,
+        )
+        
+        # Process ggl Shopping data
+        ggl_results = ggl_response.json().get('results', [])[0]['content']['results']['organic']
+        valid_ggl_products = [
+            {
+                'title': product.get('title'),
+                'price': product.get('price_str'),
+                'url': product.get('url'),
+                'thumbnail': product.get('thumbnail'),
+                'rating': product.get('rating'),
+                'merchant_name': product['merchant'].get('name'),
+                'merchant_url': product['merchant'].get('url')
+            } for product in ggl_results if product.get('price', 0) > 0
+        ]
+
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
             'amz_products': amz_sorted_products,
+            'ggl_products': valid_ggl_products,
         })
 
     return redirect('home')

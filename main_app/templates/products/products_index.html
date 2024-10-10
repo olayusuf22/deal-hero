@@ -35,8 +35,8 @@
     <h1>Other Options</h1>
     <div class='other-options-carousel'>
         {% for product in amz_products %}
+        {% if product != amz_best_product %}
             <div class='product-card'>
-                {% if product != amz_best_product %}
                     <div class="product-titles">
                         <h3>{{ product.title }}</h2>
                         <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">
@@ -53,8 +53,8 @@
                         {% endif %}
                         <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
                     </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
