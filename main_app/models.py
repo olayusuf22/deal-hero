@@ -30,7 +30,7 @@ class Retailer(models.Model):
         return self.name
     
 class Wishlist(models.Model):
-    name = models.CharField(max_length=200)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
