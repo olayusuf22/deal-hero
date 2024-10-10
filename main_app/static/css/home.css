@@ -17,8 +17,15 @@ body {
 }
 
 h2 { 
+    text-align: center;
     font-size: 3svh;
     font-weight: 700;
+    padding: 8px;
+}
+
+h3 {
+    text-align: center;
+    padding: 8px;
 }
 
 header {

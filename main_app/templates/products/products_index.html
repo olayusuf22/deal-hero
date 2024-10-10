@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/products_index.css' %}" />
+{% endblock %}
+{% block content %}
+
+<div class='results-wrapper'>
+
+    <div class="product-card">
+        <div class="product-titles">
+            <h1>Best Option</h1>
+            <h2>{{ best_product.title }}</h2>
+        </div>
+        <div class="details-container">
+            <div class="best-option-img-container">
+                <img class="product-image" src="{{ best_product.url_image }}" alt="{{ best_product.title }}">
+                <img class="icon-stamp" src="{% static '/icons/Icon-7-Hero-Choice.png' %}" alt="Hero Choice Tag">
+            </div>
+            <section class='description-text'>    
+                <p><strong>Price: </strong>{{ best_product.currency }} {{ best_product.price }}</p>
+                <p><strong>Rating: </strong>{{ best_product.rating }}</p>
+                <p><strong>Reviews: </strong>{{ best_product.reviews_count }}</p>
+                {% if best_product.best_seller %}
+                    <p><strong>Best Seller</strong></p>
+                {% endif %}
+                {% if best_product.is_amazons_choice %}
+                    <p><strong>Amazon's Choice</strong></p>
+                {% endif %}
+                <a href="https://www.amazon.com{{ best_product.url }}">View on Amazon</a>
+            </section>
+        </div>
+    </div>
+
+    <h1>Other Options</h1>
+    <div class='other-options-carousel'>
+        {% for product in products %}
+            <div class='product-card'>
+                {% if product != best_product %}
+                    <div class="product-titles">
+                        <h3>{{ product.title }}</h2>
+                        <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="product-description">
+                        <p>Price: {{ product.currency }} {{ product.price }}</p>
+                        <p>Rating: {{ product.rating }}</p>
+                        <p>Reviews: {{ product.reviews_count }}</p>
+                        {% if product.best_seller %}
+                            <p><strong>Best Seller</strong></p>
+                        {% endif %}
+                        {% if product.is_amazons_choice %}
+                            <p><strong>Amazon's Choice</strong></p>
+                        {% endif %}
+                        <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

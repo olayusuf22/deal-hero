@@ -38,23 +38,56 @@ def signup(request):
 def product_search(request):
     if request.method == 'POST':
         query = request.POST.get('query')
-        # return HttpResponse(f'You searched for: {query}')
         payload = {
             'source': 'amazon_search',
             'domain_name': 'usa',
             'query': query,
-            'start_page': 2,
-            'pages': 2,
+            'start_page': 1,
+            'pages': 1,
             'parse': True,
             'context': [
             {'key': 'category_id', 'value': 16391693031}
             ],
-        }   
+        }
         response = requests.request(
             'POST',
             'https://realtime.oxylabs.io/v1/queries',
             auth=('batman_WI3g8', 'Team4batman23456_'),
             json=payload,
         )
-        return JsonResponse(response.json(), safe=False)
+        # We are only interested in the 'organic' results (not sponsored or paid results).
+        organic_results = response.json()['results'][0]['content']['results']['organic']
+
+         # Filter out products with invalid or zero price
+        valid_products = [
+            product for product in organic_results
+            if product['price'] > 0
+        ]
+
+        if not valid_products:
+            # Todo: Handle the case where no valid products are found
+            # return render(request, 'products/no_products_found.html')
+            return HttpResponse("No valid products found.")
+
+        # This is our helper function to define how we sort products.
+        def sorting_key(product):
+            return (
+                -product['pos'],     # Position in Amazon's results. Lower is better.
+                1 if product['is_amazons_choice'] else 0, 
+                1 if product['best_seller'] else 0, 
+                -product['price'],  # Lower price is better
+                product['reviews_count'], 
+                product['rating'], 
+            )
+
+        # Sort the valid products in descending order.
+        sorted_products = sorted(valid_products, key=sorting_key, reverse=True)
+        # The best product is the first one in the sorted list.
+        best_product = sorted_products[0]
+
+        return render(request, 'products/products_index.html', {
+            'best_product': best_product,
+            'products': sorted_products,
+        })
+
     return redirect('home')
