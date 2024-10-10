@@ -6,6 +6,7 @@ from .forms import SignUpForm
 from django.http import HttpResponse
 from django.http import JsonResponse
 import requests
+import os
 
 # Create your views here.
 # main_app/views.py
@@ -52,7 +53,7 @@ def product_search(request):
         response = requests.request(
             'POST',
             'https://realtime.oxylabs.io/v1/queries',
-            auth=('batman_WI3g8', 'Team4batman23456_'),
+           auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
             json=payload,
         )
         # We are only interested in the 'organic' results (not sponsored or paid results).
