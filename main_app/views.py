@@ -117,10 +117,26 @@ def product_search(request):
                 'merchant_url': product['merchant'].get('url')
             } for product in ggl_results if product.get('price', 0) > 0
         ]
+        
+
+        def sorting_key_ggl(product):
+            return (
+                -product.get('pos', 0),  # Position in Google Shopping results, lower is better.
+                product.get('reviews_count', 0),  # Higher number of reviews is better.
+                product.get('rating', 0),  # Higher rating is better.
+                -float(product['price'].replace('$', '').replace(',', '')),  # Lower price is better, remove symbols.
+            )
+
+        # Sort the valid Google products in descending order
+        ggl_sorted_products = sorted(valid_ggl_products, key=sorting_key_ggl, reverse=True)
+
+        # The best product is the first one in the sorted list
+        ggl_best_product = ggl_sorted_products[0] if ggl_sorted_products else None
 
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
             'amz_products': amz_sorted_products,
+            'gg_best_product': ggl_best_product,
             'ggl_products': valid_ggl_products,
         })
 
