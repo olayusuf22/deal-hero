@@ -86,9 +86,58 @@ def product_search(request):
         # The best product is the first one in the sorted list.
         amz_best_product = amz_sorted_products[0]
 
+        ggl_payload = {
+            'source': 'google_shopping_search',
+            'domain': 'com',
+            'query': query,
+            'pages': 1,  # You can adjust pages based on your needs
+            'parse': True,
+            'context': [
+                {'key': 'sort_by', 'value': 'pd'},  # Sort by price descending (pd)
+                {'key': 'min_price', 'value': 20},  # Minimum price filter (example)
+            ]
+        }
+        ggl_response = requests.request(
+            'POST',
+            'https://realtime.oxylabs.io/v1/queries',
+            auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
+            json=ggl_payload,
+        )
+        
+        # Process ggl Shopping data
+        ggl_results = ggl_response.json().get('results', [])[0]['content']['results']['organic']
+        valid_ggl_products = [
+            {
+                'title': product.get('title'),
+                'price': product.get('price_str'),
+                'url': product.get('url'),
+                'thumbnail': product.get('thumbnail'),
+                'rating': product.get('rating'),
+                'merchant_name': product['merchant'].get('name'),
+                'merchant_url': product['merchant'].get('url')
+            } for product in ggl_results if product.get('price', 0) > 0
+        ]
+        
+
+        def sorting_key_ggl(product):
+            return (
+                -product.get('pos', 0),  # Position in Google Shopping results, lower is better.
+                product.get('reviews_count', 0),  # Higher number of reviews is better.
+                product.get('rating', 0),  # Higher rating is better.
+                -float(product['price'].replace('$', '').replace(',', '')),  # Lower price is better, remove symbols.
+            )
+
+        # Sort the valid Google products in descending order
+        ggl_sorted_products = sorted(valid_ggl_products, key=sorting_key_ggl, reverse=True)
+
+        # The best product is the first one in the sorted list
+        ggl_best_product = ggl_sorted_products[0] if ggl_sorted_products else None
+
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
             'amz_products': amz_sorted_products,
+            'gg_best_product': ggl_best_product,
+            'ggl_products': valid_ggl_products,
         })
 
     return redirect('home')
