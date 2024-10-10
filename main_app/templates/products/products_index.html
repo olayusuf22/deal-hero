@@ -10,33 +10,33 @@
     <div class="product-card">
         <div class="product-titles">
             <h1>Best Option</h1>
-            <h2>{{ best_product.title }}</h2>
+            <h2>{{ amz_best_product.title }}</h2>
         </div>
         <div class="details-container">
             <div class="best-option-img-container">
-                <img class="product-image" src="{{ best_product.url_image }}" alt="{{ best_product.title }}">
+                <img class="product-image" src="{{ amz_best_product.url_image }}" alt="{{ amz_best_product.title }}">
                 <img class="icon-stamp" src="{% static '/icons/Icon-7-Hero-Choice.png' %}" alt="Hero Choice Tag">
             </div>
             <section class='description-text'>    
-                <p><strong>Price: </strong>{{ best_product.currency }} {{ best_product.price }}</p>
-                <p><strong>Rating: </strong>{{ best_product.rating }}</p>
-                <p><strong>Reviews: </strong>{{ best_product.reviews_count }}</p>
-                {% if best_product.best_seller %}
+                <p><strong>Price: </strong>{{ amz_best_product.currency }} {{ amz_best_product.price }}</p>
+                <p><strong>Rating: </strong>{{ amz_best_product.rating }}</p>
+                <p><strong>Reviews: </strong>{{ amz_best_product.reviews_count }}</p>
+                {% if amz_best_product.best_seller %}
                     <p><strong>Best Seller</strong></p>
                 {% endif %}
-                {% if best_product.is_amazons_choice %}
+                {% if amz_best_product.is_amazons_choice %}
                     <p><strong>Amazon's Choice</strong></p>
                 {% endif %}
-                <a href="https://www.amazon.com{{ best_product.url }}">View on Amazon</a>
+                <a href="https://www.amazon.com{{ amz_best_product.url }}">View on Amazon</a>
             </section>
         </div>
     </div>
 
     <h1>Other Options</h1>
     <div class='other-options-carousel'>
-        {% for product in products %}
+        {% for product in amz_products %}
             <div class='product-card'>
-                {% if product != best_product %}
+                {% if product != amz_best_product %}
                     <div class="product-titles">
                         <h3>{{ product.title }}</h2>
                         <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">

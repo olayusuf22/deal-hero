@@ -82,13 +82,13 @@ def product_search(request):
             )
 
         # Sort the valid products in descending order.
-        sorted_products = sorted(valid_products, key=sorting_key, reverse=True)
+        amz_sorted_products = sorted(valid_products, key=sorting_key, reverse=True)
         # The best product is the first one in the sorted list.
-        best_product = sorted_products[0]
+        amz_best_product = amz_sorted_products[0]
 
         return render(request, 'products/products_index.html', {
-            'best_product': best_product,
-            'products': sorted_products,
+            'amz_best_product': amz_best_product,
+            'amz_products': amz_sorted_products,
         })
 
     return redirect('home')
