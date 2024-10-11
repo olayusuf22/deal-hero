@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import SignUpForm
 from django.http import HttpResponse
-from django.http import JsonResponse
 import requests
 import os
 
