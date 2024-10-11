@@ -12,8 +12,8 @@ import requests
 import re
 import os
 
-# Create your views here.
-# main_app/views.py
+
+
 
 def about(request):
     return render(request, 'about.html')
@@ -30,7 +30,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Account created successfully!')
-            return redirect('login')  # Replace 'login' with your login URL name
+            return redirect('login')  
         else:
             messages.error(request, 'Please correct the errors below.')
     else:
@@ -85,15 +85,15 @@ def product_search(request):
             'pages': 1,
             'parse': True,
             'context': [
-                {'key': 'min_price', 'value': 1},  # Minimum price filter
+                {'key': 'min_price', 'value': 1},  
             ]
         }
 
         amz_data = fetch_product_data(amazon_payload)
         ggl_data = fetch_product_data(google_payload)
 
-        # Print the google data to see the structure
-        # print(ggl_data)
+        
+        
                                                      
         amz_results = amz_data['results'][0]['content']['results']['organic']
         ggl_results = ggl_data['results'][0]['content']['results']['organic']
@@ -118,12 +118,12 @@ def product_search(request):
 
         def sorting_key(product):
             return (
-                    -product.get('pos', 0),  # Lower position is better
-                    1 if product.get('is_amazons_choice', False) else 0,  # Prioritize Amazon's Choice products
-                    1 if product.get('best_seller', False) else 0,  # Prioritize Best Seller products
-                    product.get('reviews_count', 0),  # Higher review count is better
-                    product.get('rating', 0),  # Higher rating is better
-                    -product['price'],  # Lower price is better
+                    -product.get('pos', 0),  
+                    1 if product.get('is_amazons_choice', False) else 0,  
+                    1 if product.get('best_seller', False) else 0,  
+                    product.get('reviews_count', 0),  
+                    product.get('rating', 0),  
+                    -product['price'],  
             )
 
         amz_sorted_products = sorted(valid_amz_products, key=sorting_key, reverse=True)
@@ -141,8 +141,6 @@ def product_search(request):
 
     return redirect('home')
 
-from django.contrib.auth.decorators import login_required
-
 @login_required
 def fetch_product_details(request, product_id):
     if request.method == 'POST':
@@ -159,22 +157,17 @@ def fetch_product_details(request, product_id):
             json=payload,
         )
         data = response.json()
-
-        # Extract relevant fields from the API response
-        product_name = data.get('product_name', '')
-        category = data.get('category', [{}])[0].get('ladder', [{}])[-1].get('name', '')
-        product_url = data.get('url', '')
-        image_url = data.get('images', [''])[0]
-        description = data.get('description', '')
-        rating = data.get('rating', 0)
-        in_stock = data.get('stock', '').lower() == 'in stock.'
-        price = data.get('price', 0)
-        retailer_name = data.get('featured_merchant', {}).get('name', 'Amazon')
         
-        # Get or create the retailer
-        retailer, created = Retailer.objects.get_or_create(name=retailer_name)
-
-        # Check if the product already exists to avoid duplicates
+        product_name = data['results'][0]['content']['product_name']        
+        category = data['results'][0]['content']['category'][0]['ladder'][-1]['name']        
+        product_url = data['results'][0]['content']['url']        
+        image_url = data['results'][0]['content']['images'][0]        
+        description = data['results'][0]['content']['description']        
+        rating = data['results'][0]['content']['rating']        
+        in_stock = data['results'][0]['content']['stock'].lower() == 'in stock.'        
+        price = data['results'][0]['content']['price']        
+        retailer_name = data['results'][0]['content']['featured_merchant']['name']               
+        retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
         product, created = Product.objects.get_or_create(
             name=product_name,
             defaults={
@@ -189,8 +182,7 @@ def fetch_product_details(request, product_id):
                 'retailer': retailer
             }
         )
-
-        # Save the product to the user's wishlist
+       
         Wishlist.objects.get_or_create(
             product_id=product,
             user=request.user
