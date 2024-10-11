@@ -141,6 +141,7 @@ def product_search(request):
 
     return redirect('home')
 
+
 @login_required
 def fetch_product_details(request, product_id):
     if request.method == 'POST':
