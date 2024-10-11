@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <h1>Other Options</h1>
+    <h1>Other Amazon Options</h1>
     <div class='other-options-carousel'>
         {% for product in amz_products %}
         {% if product != amz_best_product %}
@@ -42,20 +42,50 @@
                         <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">
                     </div>
                     <div class="product-description">
-                        <p>Price: {{ product.currency }} {{ product.price }}</p>
-                        <p>Rating: {{ product.rating }}</p>
-                        <p>Reviews: {{ product.reviews_count }}</p>
-                        {% if product.best_seller %}
-                            <p><strong>Best Seller</strong></p>
-                        {% endif %}
-                        {% if product.is_amazons_choice %}
-                            <p><strong>Amazon's Choice</strong></p>
-                        {% endif %}
-                        <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
+                        <div class="logo-container">
+                            <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
+                            <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
+                        </div>
+                            <section class="description-text">
+                                <p>Price: {{ product.currency }} {{ product.price }}</p>
+                                <p>Rating: {{ product.rating }}</p>
+                                <p>Reviews: {{ product.reviews_count }}</p>
+                                {% if product.best_seller %}
+                                    <p><strong>Best Seller</strong></p>
+                                {% endif %}
+                                {% if product.is_amazons_choice %}
+                                    <p><strong>Amazon's Choice</strong></p>
+                                {% endif %}
+                            </section>
                     </div>
                 </div>
             {% endif %}
         {% endfor %}
     </div>
+
+    <h1>Other Google Shopping Options</h1>
+    <div class='other-options-carousel'>
+            {% for product in ggl_products %}
+                <div class='product-card'>
+                    <div class="product-titles">
+                        <h3>{{ product.title }}</h2>
+                        <img class="product-image" src="data:image/jpeg;base64,{{ product.thumbnail }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="product-description">
+                        <div class="logo-container">
+                                <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
+                                <a href="https://www.google.com{{ product.url }}">Buy from {{ product.merchant.name }}</a>
+                        </div>
+                        <section class="description-text">
+                            <p><strong>Price: </strong>{{ product.currency }} {{ product.price }}</p>
+                            <p><strong>Rating: </strong>{{ product.rating }}</p>
+                            <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
+                            <p><strong>Merchant: </strong>{{ product.merchant.name }}</p>
+                        </section>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+
 </div>
 {% endblock %}
