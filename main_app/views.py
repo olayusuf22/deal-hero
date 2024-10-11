@@ -141,7 +141,6 @@ def product_search(request):
 
     return redirect('home')
 
-from django.contrib.auth.decorators import login_required
 
 @login_required
 def fetch_product_details(request, product_id):
