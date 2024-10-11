@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm
 from django.http import HttpResponse
 from pprint import pprint
+from .models import Product, Retailer
+from .models import Wishlist
 import urllib.parse
 import requests
 import re
@@ -138,6 +141,9 @@ def product_search(request):
 
     return redirect('home')
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def fetch_product_details(request, product_id):
     if request.method == 'POST':
         payload = {
@@ -152,7 +158,44 @@ def fetch_product_details(request, product_id):
             auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
             json=payload,
         )
-        pprint(response.json())
-        return HttpResponse(response)
+        data = response.json()
 
+        # Extract relevant fields from the API response
+        product_name = data.get('product_name', '')
+        category = data.get('category', [{}])[0].get('ladder', [{}])[-1].get('name', '')
+        product_url = data.get('url', '')
+        image_url = data.get('images', [''])[0]
+        description = data.get('description', '')
+        rating = data.get('rating', 0)
+        in_stock = data.get('stock', '').lower() == 'in stock.'
+        price = data.get('price', 0)
+        retailer_name = data.get('featured_merchant', {}).get('name', 'Amazon')
+        
+        # Get or create the retailer
+        retailer, created = Retailer.objects.get_or_create(name=retailer_name)
+
+        # Check if the product already exists to avoid duplicates
+        product, created = Product.objects.get_or_create(
+            name=product_name,
+            defaults={
+                'category': category,
+                'product_url': product_url,
+                'image_url': image_url,
+                'description': description,
+                'rating': rating,
+                'in_stock': in_stock,
+                'price_drop_threshold': price,
+                'user': request.user,
+                'retailer': retailer
+            }
+        )
+
+        # Save the product to the user's wishlist
+        Wishlist.objects.get_or_create(
+            product_id=product,
+            user=request.user
+        )
+
+        return HttpResponse(f"Product details fetched and saved successfully for {product_id}.")
+    
     return redirect('home')
