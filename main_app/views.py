@@ -3,7 +3,9 @@ from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from .forms import SignUpForm
 from django.http import HttpResponse
+import urllib.parse
 import requests
+import re
 import os
 
 # Create your views here.
@@ -40,6 +42,22 @@ def fetch_product_data(payload):
     )
     return response.json()
 
+def get_logo_url(merchant_name):
+    if '.' in merchant_name:
+        cleaned_name = re.split(r'\.com|\.net|\.org', merchant_name)[0] + ".com"
+        return f"https://img.logo.dev/{cleaned_name}?token=pk_MHqHMYHhSPqsrHGnE0dW1Q"
+    
+    cleaned_name = merchant_name.replace("'", "")
+    cleaned_name = cleaned_name.replace(" ", "")
+    
+    return f"https://img.logo.dev/{cleaned_name}.com?token=pk_MHqHMYHhSPqsrHGnE0dW1Q"
+
+def extract_url(full_url):
+    parsed_url = urllib.parse.urlparse(full_url)
+    query_params = urllib.parse.parse_qs(parsed_url.query)
+    return query_params.get('url', [full_url])[0]
+
+
 def product_search(request):
     if request.method == 'POST':
         query = request.POST.get('query')
@@ -63,16 +81,25 @@ def product_search(request):
             'pages': 1,
             'parse': True,
             'context': [
-                {'key': 'sort_by', 'value': 'pd'},  # Sort by price descending (pd)
-                {'key': 'min_price', 'value': 20},  # Minimum price filter
+                {'key': 'min_price', 'value': 1},  # Minimum price filter
             ]
         }
 
         amz_data = fetch_product_data(amazon_payload)
         ggl_data = fetch_product_data(google_payload)
 
+        # Print the search URL.
+        print(f"Search URL: {ggl_data['results'][0]['content']['url']}")
+                                                     
         amz_results = amz_data['results'][0]['content']['results']['organic']
         ggl_results = ggl_data['results'][0]['content']['results']['organic']
+
+        for product in amz_results:
+            product['logo_url'] = get_logo_url('Amazon.com')
+        
+        for product in ggl_results:
+            merchant_name = product['merchant']['name']
+            product['logo_url'] = get_logo_url(merchant_name)
 
         valid_amz_products = [
             product for product in amz_results if product.get('price', 0) > 0
