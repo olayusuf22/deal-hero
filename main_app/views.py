@@ -88,8 +88,8 @@ def product_search(request):
         amz_data = fetch_product_data(amazon_payload)
         ggl_data = fetch_product_data(google_payload)
 
-        # Print the search URL.
-        print(f"Search URL: {ggl_data['results'][0]['content']['url']}")
+        # Print the google data to see the structure
+        print(ggl_data)
                                                      
         amz_results = amz_data['results'][0]['content']['results']['organic']
         ggl_results = ggl_data['results'][0]['content']['results']['organic']
@@ -134,5 +134,19 @@ def product_search(request):
             'gg_best_product': ggl_best_product,
             'ggl_products': ggl_sorted_products,
         })
+
+    return redirect('home')
+
+def fetch_product_details(request, product_id):
+    if request.method == 'POST':
+        url = extract_url(request.POST.get('url'))
+        payload = {
+            'source': 'product_page',
+            'domain': 'com',
+            'url': url,
+            'parse': True,
+        }
+        response = fetch_product_data(payload)
+        return HttpResponse(response)
 
     return redirect('home')
