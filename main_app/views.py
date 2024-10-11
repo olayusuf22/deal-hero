@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from .forms import SignUpForm
 from django.http import HttpResponse
+from pprint import pprint
 import urllib.parse
 import requests
 import re
@@ -89,7 +90,7 @@ def product_search(request):
         ggl_data = fetch_product_data(google_payload)
 
         # Print the google data to see the structure
-        print(ggl_data)
+        # print(ggl_data)
                                                      
         amz_results = amz_data['results'][0]['content']['results']['organic']
         ggl_results = ggl_data['results'][0]['content']['results']['organic']
@@ -139,14 +140,19 @@ def product_search(request):
 
 def fetch_product_details(request, product_id):
     if request.method == 'POST':
-        url = extract_url(request.POST.get('url'))
         payload = {
-            'source': 'product_page',
+            'source': 'amazon_product',
             'domain': 'com',
-            'url': url,
+            'query': f'{product_id}',
             'parse': True,
         }
-        response = fetch_product_data(payload)
+        response = requests.request(
+            'POST',
+            'https://realtime.oxylabs.io/v1/queries',
+            auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
+            json=payload,
+        )
+        pprint(response.json())
         return HttpResponse(response)
 
     return redirect('home')
