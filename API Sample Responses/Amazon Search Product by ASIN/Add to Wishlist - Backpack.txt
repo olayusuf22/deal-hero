@@ -1,0 +1,655 @@
+{
+  "results": [
+    {
+      "content": {
+        "ads": [
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          }
+        ],
+        "url": "https://www.amazon.com/dp/B06XZTZ7GB",
+        "asin": "B06XZTZ7GB",
+        "page": 1,
+        "price": 21.99,
+        "stock": "In Stock",
+        "title": "MATEIN Travel Laptop Backpack, Business Anti Theft Slim Sturdy Laptops Backpack with USB Charging Port, Water Resistant College School Computer Bag Gift for Men & Women Fits 15.6 Inch Notebook, Grey",
+        "buybox": [
+          {
+            "price": 21.99,
+            "stock": "In Stock",
+            "delivery_type": "Delivery",
+            "delivery_details": [
+              {
+                "date": {
+                  "by": "Wednesday, October 16",
+                  "from": null
+                },
+                "type": "FREE delivery"
+              },
+              {
+                "date": {
+                  "by": "Prime members",
+                  "from": null
+                },
+                "type": "Or"
+              }
+            ]
+          },
+          {
+            "price": 21.99,
+            "stock": "In Stock",
+            "delivery_type": "Pickup",
+            "delivery_details": [
+              {
+                "date": {
+                  "by": "Wednesday, October 16",
+                  "from": null
+                },
+                "type": "FREE pickup"
+              },
+              {
+                "date": {
+                  "by": "Prime members",
+                  "from": null
+                },
+                "type": "Or"
+              }
+            ]
+          }
+        ],
+        "coupon": "",
+        "images": [
+          "https://m.media-amazon.com/images/I/81OFxhFWmML._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/71VjQj0LwRL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/717mHhjnq8L._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/7149YhkuUbL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/71wn3SGIQBL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/71zyTJNuYaL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/71jnpcK6SuL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/71bukeQaKpL._AC_SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/51xhJciVhfL._AC_.jpg"
+        ],
+        "rating": 4.7,
+        "_errors": [
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'"
+        ],
+        "category": [
+          {
+            "ladder": [
+              {
+                "url": "/electronics-store/b/ref=dp_bc_aui_C_1?ie=UTF8&node=172282",
+                "name": "Electronics"
+              },
+              {
+                "url": "/computer-pc-hardware-accessories-add-ons/b/ref=dp_bc_aui_C_2?ie=UTF8&node=541966",
+                "name": "Computers & Accessories"
+              },
+              {
+                "url": "/Laptop-Accessories/b/ref=dp_bc_aui_C_3?ie=UTF8&node=3011391011",
+                "name": "Laptop Accessories"
+              },
+              {
+                "url": "/Carrying-Cases-Bags-Notebook-Accessories/b/ref=dp_bc_aui_C_4?ie=UTF8&node=172470",
+                "name": "Bags, Cases & Sleeves"
+              },
+              {
+                "url": "/Laptop-Backpacks/b/ref=dp_bc_aui_C_5?ie=UTF8&node=335604011",
+                "name": "Backpacks"
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "delivery": [
+          {
+            "date": {
+              "by": "Wednesday, October 16",
+              "from": null
+            },
+            "type": "FREE delivery"
+          },
+          {
+            "date": {
+              "by": "Prime members",
+              "from": null
+            },
+            "type": "Or"
+          }
+        ],
+        "page_type": "Product",
+        "price_sns": 0,
+        "variation": [
+          {
+            "asin": "B0BVW3ZLWX",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Dark Green"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41x2jnEHmHL._SS36_.jpg"
+          },
+          {
+            "asin": "B06XZTZ7GB",
+            "selected": true,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Austere Grey"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/51grvfywmKL._SS36_.jpg"
+          },
+          {
+            "asin": "B07HMMM934",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Light Gray"
+            }
+          },
+          {
+            "asin": "B09XHV4PKH",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Galaxy"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/51tduqyx+oL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BL374P18",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Lavender Purple"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/412dd0MUdML._SS36_.jpg"
+          },
+          {
+            "asin": "B09XHRG6HD",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Yellow"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41Fi4MhFJlL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BVW13SJ3",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Deep Red"
+            }
+          },
+          {
+            "asin": "B0BL391341",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Beige"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/416gVAeV8bL._SS36_.jpg"
+          },
+          {
+            "asin": "B076CB53JV",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Blue"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41R0tATsDmL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BW5BGVW6",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Dark Brown"
+            }
+          },
+          {
+            "asin": "B07N3WQ6H7",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Black"
+            }
+          },
+          {
+            "asin": "B07BWD734D",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Grey and Black Camo"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/51FfZe996UL._SS36_.jpg"
+          },
+          {
+            "asin": "B0CCDJLC55",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Peacock Blue"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41yQGF1++oL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BVVZ2NZN",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Viva Magenta"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41blg7IUSyL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BWN1XQNT",
+            "selected": false,
+            "dimensions": {
+              "Size": "18 Inch",
+              "Color": "Grey"
+            }
+          },
+          {
+            "asin": "B07N3YF896",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Navy Blue"
+            }
+          },
+          {
+            "asin": "B0BLYMDLXH",
+            "selected": false,
+            "dimensions": {
+              "Size": "14 Inch",
+              "Color": "Periwinkle Blue"
+            }
+          },
+          {
+            "asin": "B0BW5B4X1Z",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Galaxy Blue"
+            }
+          },
+          {
+            "asin": "B07BW9225Q",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Red"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/51rqSa+zPUL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BLXS6YYK",
+            "selected": false,
+            "dimensions": {
+              "Size": "14 Inch",
+              "Color": "Light Pink"
+            }
+          },
+          {
+            "asin": "B074KV9TT4",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Black Charcoal"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/51T5nboyFJL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BVVXTFWC",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Mint Green"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41enEkvBHdL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BW598ZBN",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Camo Grey"
+            }
+          },
+          {
+            "asin": "B07BWF99HZ",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Camouflage"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41JI-jnsYBL._SS36_.jpg"
+          },
+          {
+            "asin": "B0BL31WCV2",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Light Blue"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41St4wcGACL._SS36_.jpg"
+          },
+          {
+            "asin": "B0C7Z4FNH3",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Pink"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41OKhIXAh5L._SS36_.jpg"
+          },
+          {
+            "asin": "B0BW5F4X7F",
+            "selected": false,
+            "dimensions": {
+              "Size": "17 Inch",
+              "Color": "Bright Yellow"
+            }
+          },
+          {
+            "asin": "B07BW8NK1M",
+            "selected": false,
+            "dimensions": {
+              "Size": "15.6 Inch",
+              "Color": "Tawny Brown"
+            },
+            "tooltip_image": "https://m.media-amazon.com/images/I/41w6aovn3zL._SS36_.jpg"
+          }
+        ],
+        "has_videos": true,
+        "sales_rank": [],
+        "top_review": "I wanted a medium-sized backpack for a trip, one with numerous pockets for putting away various items. This backpack was perfect. I could put quite a lot of stuff in it and keep items of different categories separate. There were plenty of zippers and pouches for everything. I love the 2 side pockets for water bottles. There is even a small pouch with a zipper the fits close to the back so is very secure- no pick pocketing allowed. It's perfect for a passport, small amount of money, etc. I didn't use it for my this backpack for my laptop this trip but the compartment was big enough for it for another trip where I usually need my laptop. The larger compartment was big enough to stuff a sweatshirt as well. It was perfect.  Since then I've used it just for hiking and since it's quite lightweight, it works great for that as well. The construction seems very solid and the zippers work great. I highly recommend this backpack for these types of needs. If I needed to carry a lot of heavy books, I'm not sure this backpack would have been the best choice- I think a heavier, more heavy-duty one would be better. But I wasn't wanting a heavy backpack for books, so it was perfect for me. A heavy one would not have been good for hiking, etc. So if you're wanting a light-weight but durable backpack, this is the one for you!\n  \nRead more",
+        "asin_in_url": "B06XZTZ7GB",
+        "buy_it_with": [
+          {
+            "asin": "B07CZDXDG8",
+            "price": 17.99,
+            "title": "INIU Portable Charger, Slimmest 10000mAh 5V/3A Power Bank, USB C in&out High-Speed Charging Battery Pack, External Phone Powerbank Compatible with iPhone 16 15 14 13 12 Samsung S22 S21 Google iPad etc"
+          },
+          {
+            "asin": "B07QN9NPKN",
+            "price": 25.99,
+            "title": "MATEIN Travel Laptop Backpack, 17 inch Business Flight Approved Carry on Backpack, TSA Large Computer Backpack for Men Women with USB Port and Trolley Sleeve, College School Tactical Book Bag, Grey"
+          }
+        ],
+        "description": "Airplane Travel Essentials, Traveling Essentials for Flying, Travel Must Haves, Travel Necessities, Travel Gifts, Gifts for People Who Travel a Lot",
+        "parent_asin": "B0965MKF6D",
+        "price_upper": 21.99,
+        "pricing_str": "New & Used (4) from $21.77$21.77 FREE Shipping on orders over $35.00 shipped by Amazon.",
+        "pricing_url": "https://www.amazon.com/gp/offer-listing/B06XZTZ7GB/ref=dp_olp_ALL_mbc?ie=UTF8&condition=ALL",
+        "manufacturer": "MATEIN",
+        "max_quantity": 20,
+        "price_buybox": 21.99,
+        "product_name": "MATEIN Travel Laptop Backpack, Business Anti Theft Slim Sturdy Laptops Backpack with USB Charging Port, Water Resistant College School Computer Bag Gift for Men & Women Fits 15.6 Inch Notebook, Grey",
+        "sales_volume": "10K+",
+        "bullet_points": "LOTS OF STORAGE SPACE & POCKETS: One separate laptop compartment hold 15.6 Inch Laptop as well as 15 Inch,14 Inch and 13 Inch Laptop. One spacious packing compartment roomy for daily necessities,tech electronics accessories. Front compartment with many pockets, pen pockets and key fob hook, makes your item organized and easier to find\nCOMFY & STURDY: Comfortable soft padded back design with thick but soft multi-panel ventilated padding, gives you maximum back support. Breathable and adjustable shoulder straps relieve the stress of shoulder. Foam padded top handle for the long time carry on using\nFUNCTIONAL & SAFE: A luggage strap allows backpack fit on luggage/suitcase, slide over the luggage upright handle tube for easier carrying. With a hidden anti theft pocket on the back protect your valuable items from thieves. Well made for international airplane travel and day trip as a travel gift for men\nUSB PORT DESIGN: With built in USB charger outside and built in charging cable inside,this usb backpack offers you a more convenient way to charge your phone while walking. It's a great tech gift for him from wife, daughter and son. Please noted that this backpack doesn't power itself, usb charging port only offers an easy access to charge\nSTURDY MATERIAL & SOLID: Made of Water Resistant and Sturdy Polyester Fabric with metal zippers. Ensure a secure & long-lasting usage everyday & weekend.Serve you well as professional office work bag,slim USB charging bagpack, back to college backpacks. 15.6 inch travel laptop backpack for daily using and organize",
+        "other_sellers": "New & Used (4) from $21.77 FREE Shipping on orders over $35.00 shipped by Amazon.",
+        "price_initial": 0,
+        "pricing_count": 1,
+        "reviews_count": 100521,
+        "sns_discounts": [],
+        "developer_info": [],
+        "price_shipping": 0,
+        "product_details": {
+          "upc": "714929947284 714929947512 724873726729",
+          "asin": "B06XZTZ7GB",
+          "color": "Austere Grey",
+          "shape": "travel backpack",
+          "theme": "travel and daily use",
+          "pattern": "travel laptop backpack",
+          "team_name": "travel laptop backpack",
+          "brand_name": "MATEIN",
+          "model_name": "Lsg1004gryb1",
+          "shell_type": "Soft Shell",
+          "strap_type": "Shoulder Strap",
+          "style_name": "15.6 Inch Travel Laptop Backpack Grey",
+          "unit_count": "1 Count",
+          "item_weight": "708 Grams",
+          "league_name": "BACKPACK",
+          "school_type": "College",
+          "model_number": "LSG1004GRYB1",
+          "material_type": "polyester",
+          "is_autographed": "No",
+          "outer_material": "Polyester",
+          "storage_volume": "30 Liters",
+          "backpack_design": "Laptop Backpack",
+          "number_of_items": "1",
+          "special_feature": "Laptop Compartment, USB Charging Port",
+          "customer_reviews": "4.7 4.7 out of 5 stars 100,521 ratings 4.7 out of 5 stars",
+          "best_sellers_rank": "#1 in Laptop Backpacks",
+          "number_of_pockets": "5",
+          "subject_character": "Travel Laptop Backpack",
+          "lining_description": "Nylon",
+          "pocket_description": "Utility Pocket",
+          "apparel_closure_type": "Zipper",
+          "age_range_description": "Adult",
+          "embellishment_feature": "shoulder straps",
+          "water_resistance_level": "Water Resistant",
+          "item_dimensions_d_x_w_x_h": "12\"D x 18\"W x 7.8\"H",
+          "product_care_instructions": "Hand Wash Only",
+          "recommended_uses_for_product": "Travel",
+          "compatible_device_size_maximum": "15.6 Inches",
+          "global_trade_identification_number": "00714929947284"
+        },
+        "featured_merchant": {
+          "link": "/gp/help/seller/at-a-glance.html/ref=dp_merchant_link?ie=UTF8&seller=A1PQG4T5PZRJDI&asin=B06XZTZ7GB&ref_=dp_merchant_link&isAmazonFulfilled=1",
+          "name": "YoTwo",
+          "seller_id": "A1PQG4T5PZRJDI",
+          "shipped_from": "Amazon",
+          "is_amazon_fulfilled": true
+        },
+        "is_prime_eligible": true,
+        "parse_status_code": 12005,
+        "discount_percentage": 45,
+        "price_strikethrough": 39.96,
+        "warranty_and_support": {
+          "links": [
+            {
+              "url": "/gp/feature.html/ref=dp_warranty_request_3P?docId=1002406021",
+              "title": "click here"
+            }
+          ],
+          "description": "Product Warranty: For warranty information about this product, please click here"
+        },
+        "answered_questions_count": 0,
+        "rating_stars_distribution": [
+          {
+            "rating": 5,
+            "percentage": 82
+          },
+          {
+            "rating": 4,
+            "percentage": 12
+          },
+          {
+            "rating": 3,
+            "percentage": 3
+          },
+          {
+            "rating": 2,
+            "percentage": 1
+          },
+          {
+            "rating": 1,
+            "percentage": 2
+          }
+        ],
+        "frequently_bought_together": [
+          {
+            "asin": "B06XZTZ7GB"
+          },
+          {
+            "asin": "B07CZDXDG8"
+          },
+          {
+            "asin": "B07QN9NPKN"
+          }
+        ]
+      },
+      "created_at": "2024-10-12 02:32:45",
+      "updated_at": "2024-10-12 02:32:49",
+      "page": 1,
+      "url": "https://www.amazon.com/dp/B06XZTZ7GB",
+      "job_id": "7250694856975064065",
+      "is_render_forced": false,
+      "status_code": 200,
+      "parser_type": ""
+    }
+  ],
+  "job": {
+    "callback_url": null,
+    "client_id": 82573,
+    "context": [
+      {
+        "key": "force_headers",
+        "value": null
+      },
+      {
+        "key": "force_cookies",
+        "value": false
+      },
+      {
+        "key": "hc_policy",
+        "value": null
+      },
+      {
+        "key": "autoselect_variant",
+        "value": false
+      },
+      {
+        "key": "check_empty_geo",
+        "value": null
+      },
+      {
+        "key": "safe_search",
+        "value": true
+      }
+    ],
+    "created_at": "2024-10-12 02:32:45",
+    "domain": "com",
+    "geo_location": null,
+    "id": "7250694856975064065",
+    "limit": 10,
+    "locale": null,
+    "pages": 1,
+    "parse": true,
+    "parser_type": null,
+    "parsing_instructions": null,
+    "browser_instructions": null,
+    "render": null,
+    "url": null,
+    "query": "B06XZTZ7GB",
+    "source": "amazon_product",
+    "start_page": 1,
+    "status": "done",
+    "storage_type": null,
+    "storage_url": null,
+    "subdomain": "www",
+    "content_encoding": "utf-8",
+    "updated_at": "2024-10-12 02:32:49",
+    "user_agent_type": "desktop",
+    "session_info": null,
+    "statuses": [],
+    "client_notes": null,
+    "_links": [
+      {
+        "rel": "self",
+        "href": "http://data.oxylabs.io/v1/queries/7250694856975064065",
+        "method": "GET"
+      },
+      {
+        "rel": "results",
+        "href": "http://data.oxylabs.io/v1/queries/7250694856975064065/results",
+        "method": "GET"
+      },
+      {
+        "rel": "results-content",
+        "href_list": [
+          "http://data.oxylabs.io/v1/queries/7250694856975064065/results/1/content"
+        ],
+        "method": "GET"
+      },
+      {
+        "rel": "results-html",
+        "href": "http://data.oxylabs.io/v1/queries/7250694856975064065/results?type=raw",
+        "method": "GET"
+      },
+      {
+        "rel": "results-content-html",
+        "href_list": [
+          "http://data.oxylabs.io/v1/queries/7250694856975064065/results/1/content?type=raw"
+        ],
+        "method": "GET"
+      },
+      {
+        "rel": "results-parsed",
+        "href": "http://data.oxylabs.io/v1/queries/7250694856975064065/results?type=parsed",
+        "method": "GET"
+      },
+      {
+        "rel": "results-content-parsed",
+        "href_list": [
+          "http://data.oxylabs.io/v1/queries/7250694856975064065/results/1/content?type=parsed"
+        ],
+        "method": "GET"
+      }
+    ]
+  }
+}

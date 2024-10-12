@@ -1,0 +1,397 @@
+{
+  "results": [
+    {
+      "content": {
+        "ads": [
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          },
+          {
+            "pos": "Error parsing `pos`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "asin": "Error parsing `asin`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "type": "Error parsing `type`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price": "Error parsing `price`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "title": "Error parsing `title`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "images": "Error parsing `images`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "rating": "Error parsing `rating`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "location": "Error parsing `location`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "price_upper": "Error parsing `price_upper`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "reviews_count": "Error parsing `reviews_count`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`.",
+            "is_prime_eligible": "Error parsing `is_prime_eligible`: `(<class 'AttributeError'>, AttributeError(\"'NoneType' object has no attribute 'xpath'\"))`."
+          }
+        ],
+        "url": "https://www.amazon.com/dp/B08G9J44ZN",
+        "asin": "B08G9J44ZN",
+        "page": 1,
+        "price": 298,
+        "stock": "In Stock",
+        "title": "Xbox Series S 512GB SSD Console - Includes Xbox Wireless Controller - Up to 120 frames per second - 10GB RAM 512GB SSD - Experience high dynamic range - Xbox Velocity Architecture",
+        "buybox": [
+          {
+            "price": 298,
+            "stock": "In Stock",
+            "delivery_type": "Delivery",
+            "delivery_details": [
+              {
+                "date": {
+                  "by": "21",
+                  "from": "October 18"
+                },
+                "type": "FREE delivery"
+              },
+              {
+                "date": {
+                  "by": "18",
+                  "from": "October 15"
+                },
+                "type": "Or fastest delivery"
+              }
+            ]
+          },
+          {
+            "price": 298,
+            "stock": "In Stock",
+            "delivery_type": "Pickup",
+            "delivery_details": [
+              {
+                "date": {
+                  "by": "21",
+                  "from": "October 18"
+                },
+                "type": "FREE pickup"
+              },
+              {
+                "date": {
+                  "by": "18",
+                  "from": "October 15"
+                },
+                "type": "Or fastest pickup"
+              }
+            ]
+          }
+        ],
+        "coupon": "",
+        "images": [
+          "https://m.media-amazon.com/images/I/61QKAlzPSfL._SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61x8fR-8vXL._SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61tn-8-ADuL._SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61s7Rg8GHSL._SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/612aWouhXvL._SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/81qF60gk-eL._SL1500_.jpg",
+          "https://m.media-amazon.com/images/I/61Ez6dUBSzL._SL1500_.jpg"
+        ],
+        "rating": 4.8,
+        "_errors": [
+          "Could not parse sales rank =1 name.",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'",
+          "'NoneType' object has no attribute 'xpath'"
+        ],
+        "category": [
+          {
+            "ladder": [
+              {
+                "url": "/b/ref=dp_bc_aui_C_1?ie=UTF8&node=265523",
+                "name": "Stores"
+              },
+              {
+                "url": "/Microsoft/b/ref=dp_bc_aui_C_2?ie=UTF8&node=676165011",
+                "name": "Microsoft"
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "delivery": [
+          {
+            "date": {
+              "by": "21",
+              "from": "October 18"
+            },
+            "type": "FREE delivery"
+          },
+          {
+            "date": {
+              "by": "18",
+              "from": "October 15"
+            },
+            "type": "Or fastest delivery"
+          }
+        ],
+        "page_type": "Product",
+        "price_sns": 0,
+        "variation": [
+          {
+            "asin": "B0D934SHFG",
+            "selected": false,
+            "dimensions": {
+              "Platform For Display": "Xbox Series S 1TB + Controller"
+            }
+          },
+          {
+            "asin": "B08G9J44ZN",
+            "selected": true,
+            "dimensions": {
+              "Platform For Display": "Xbox Series S 512 GB + Controller"
+            }
+          }
+        ],
+        "has_videos": true,
+        "sales_rank": [
+          {
+            "rank": "Error parsing `rank`: `Could not parse sales rank =1 name.`.",
+            "ladder": "Error parsing `ladder`: `Could not parse sales rank =1 name.`."
+          }
+        ],
+        "top_review": "To be clear Xbox Series S is next gen! it can game in 4K & play games at 120 FPS !!For parents to help out if buying for kidsXbox one S is previous gen! Note it says Xbox “one” S. Some previous gen Xbox consoles have “one” in the name.  It’s Xbox, Xbox 360, Xbox One, now Xbox Series X/S.The newest generation of Xbox consoles all have “Series” X or S in the name.Series X is the black bigger consoleSeries S is the white smaller consoleThe Xbox Series S…. It’s small, takes up little space and is powerful. The Series S can out preform the Series X in some departments like keeping 60 frames per second during challenging experiences for the console to run. The Series X wins in little things like draw distances and seeing a slightly better resolution, but at times could drop the frame rate. But they are pretty much the same next gen experience just two options for customers. What’s the biggest difference?Microsoft made a way for players not to miss out on next gen experience due to not being able to afford it! If you want next gen and also to save some money the Series S was made for you!! But if you want the full experience the Series X was made for you!! Series X wins for storage but Series S can allow 20 or more decent sized games plus don’t forget you can use cloud gaming for a lot of games you don’t want to download.Game pass cloud feature you can play games within seconds not having to download / install anything.I’ve tested the Series X and Series S and it’s barley a difference. I’m able to pick up and resume my save data from Series X to Series S no problem. Gears of war 5 or WWE 2k22 for example are just about the same on both.Series X - more storage, physical games CAN be played. Slightly better resolution. Loading time differences are to be within seconds nothing wild to report.Series S - Digital only! Meaning no physical games can be played. WiFi is required to set up and download games. Once it’s fully updated and games are downloaded it can be used offline but WiFi is needed to first set up the console and download games!!Series S should not be put down or downplayed, more information should be out there to help customers know this is truly next gen. The Series S is easier to find and it’s nothing wrong with it.Example of storage. Series S. Currently have6 Xbox series X/S optimized games installed, 9 Xbox one games installed,3 Xbox 360 games installed1 Xbox (original console) game installed.Still have 52 GB free !!Downloading my library from Xbox one (previous generation Xbox) to Series S was super easy via the Xbox app. (Available on Google play android and iOS App Store) Much easier than Sony PlayStation has been. Xbox wants you to keep your library and keeps giving added backwards compatibility! I’m so happy with my Series S and don’t even care about the Series X anymore. It’s the same thing to me with little differences that aren’t worth the price difference. And not to every gamer it will be worth the price difference.  The loading and quick resume give new life into last gen games that had long loading times ! Something like UFC 4 gets a lovely FPS boost along with Far Cry 5 and many others. Games you’ve already paid for are upgraded and new games will slowly unlock the true power of your purchase. You won’t be needing to trade the Series S in for an upgrade because it will be able to run the new titles and keep up just fine!It’s even small enough for different delivery options ! I got my Xbox delivered to a local stores locker ! It was super light to carry and didn’t come in a box revealing what’s inside thankfully.If you deeply care about 4 to 5 extra bushes and a pinch more draw distance that doesn’t make a difference to the degree that you wouldn’t be able to react. Like a driving game you’ll be able to have the same experience on both consoles same game just the series x might have slightly more available to see in the distance.  If storage is that important to y’all  or resolution go with the X. But if you want next gen and don’t need the extra storage, don’t care about physical games, and want to save money go with the Series S.Don’t miss out on next gen waiting out for the normal priced Series X if the S is available.This review is to help others understand the difference between the many names of Xbox consoles and see if the Series S is the best option. If not some information about the Xbox Series X is in my review to help to decide. Also to help parents out to make the right purchase for a potential surprise gift!Reviews are always designed to help out others and I hope it has been clear to help out others!!!\n  \nRead more",
+        "asin_in_url": "B08G9J44ZN",
+        "buy_it_with": [
+          {
+            "asin": "B09VV5LJS1",
+            "price": 54.97,
+            "title": "Xbox Core Wireless Gaming Controller – Deep Pink – Xbox Series X|S, Xbox One, Windows PC, Android, and iOS"
+          }
+        ],
+        "description": "Introducing the Xbox Series S, the smallest, sleekest Xbox console ever. Experience the speed and performance of a next-gen all-digital console at an accessible price point. Go all-digital and enjoy disc-free, next-gen gaming with the smallest Xbox console ever made. Bundle includes: Xbox Series S console, one Xbox Wireless Controller, a high-speed HDMI cable, and power cable. Experience next-gen speed and performance with the Xbox Velocity Architecture, powered by a custom SSD and integrated software.",
+        "parent_asin": "B0CTKRP8Y3",
+        "price_upper": 298,
+        "pricing_str": "New & Used (33) from $289.99$289.99 & FREE Shipping",
+        "pricing_url": "https://www.amazon.com/gp/offer-listing/B08G9J44ZN/ref=dp_olp_ALL_mbc?ie=UTF8&condition=ALL",
+        "manufacturer": "Xbox",
+        "max_quantity": 30,
+        "price_buybox": 298,
+        "product_name": "Xbox Series S 512GB SSD Console - Includes Xbox Wireless Controller - Up to 120 frames per second - 10GB RAM 512GB SSD - Experience high dynamic range - Xbox Velocity Architecture",
+        "sales_volume": "6K+",
+        "amazon_choice": true,
+        "bullet_points": "Experience the best value in gaming with Xbox Series S 512GB\nMake the most of every gaming minute with Quick Resume, lightning-fast load times, and gameplay of up to 120 FPS—all powered by Xbox Velocity Architecture.*\nAccess your favorite entertainment through apps like YouTube, Netflix, HBO Max, and more. Stream 4K video on Disney+, Netflix, Amazon, Hulu, Microsoft Movies & TV, and more.\nEnjoy digital games from four generations of Xbox, with hundreds of titles that look and play better than ever.\nPlay new games like Call of Duty: Black Ops 6, Avowed, and Indiana Jones and the Great Circle on day one, enjoy hundreds of high-quality games like Minecraft, Forza Motorsport, Sea of Thieves and more (membership sold separately).*\nIncludes: Xbox Series S console, one Xbox Wireless Controller, a high-speed HDMI cable, power cable, and 2 AA batteries.",
+        "other_sellers": "New & Used (33) from $289.99 & FREE Shipping",
+        "price_initial": 0,
+        "pricing_count": 1,
+        "reviews_count": 30422,
+        "sns_discounts": [],
+        "developer_info": [],
+        "price_shipping": 0,
+        "product_details": {
+          "asin": "B08G9J44ZN",
+          "batteries": "1 A batteries required. (included)",
+          "item_weight": "4.25 pounds",
+          "manufacturer": "Microsoft",
+          "release_date": "November 10, 2020",
+          "type_of_item": "Video Game",
+          "customer_reviews": "4.8 4.8 out of 5 stars 30,422 ratings 4.8 out of 5 stars",
+          "country_of_origin": "China",
+          "item_model_number": "Internacional",
+          "product_dimensions": "10.83 x 2.56 x 5.94 inches; 4.25 Pounds",
+          "date_first_available": "September 22, 2020"
+        },
+        "featured_merchant": [],
+        "is_prime_eligible": true,
+        "parse_status_code": 12004,
+        "product_dimensions": "10.83 x 2.56 x 5.94 inches; 4.25 Pounds",
+        "answered_questions_count": 0,
+        "rating_stars_distribution": [
+          {
+            "rating": 5,
+            "percentage": 88
+          },
+          {
+            "rating": 4,
+            "percentage": 7
+          },
+          {
+            "rating": 3,
+            "percentage": 2
+          },
+          {
+            "rating": 2,
+            "percentage": 1
+          },
+          {
+            "rating": 1,
+            "percentage": 3
+          }
+        ],
+        "frequently_bought_together": [
+          {
+            "asin": "B08G9J44ZN"
+          },
+          {
+            "asin": "B09VV5LJS1"
+          }
+        ]
+      },
+      "created_at": "2024-10-12 02:30:02",
+      "updated_at": "2024-10-12 02:30:06",
+      "page": 1,
+      "url": "https://www.amazon.com/dp/B08G9J44ZN",
+      "job_id": "7250694172250762241",
+      "is_render_forced": false,
+      "status_code": 200,
+      "parser_type": ""
+    }
+  ],
+  "job": {
+    "callback_url": null,
+    "client_id": 82573,
+    "context": [
+      {
+        "key": "force_headers",
+        "value": null
+      },
+      {
+        "key": "force_cookies",
+        "value": false
+      },
+      {
+        "key": "hc_policy",
+        "value": null
+      },
+      {
+        "key": "autoselect_variant",
+        "value": false
+      },
+      {
+        "key": "check_empty_geo",
+        "value": null
+      },
+      {
+        "key": "safe_search",
+        "value": true
+      }
+    ],
+    "created_at": "2024-10-12 02:30:02",
+    "domain": "com",
+    "geo_location": null,
+    "id": "7250694172250762241",
+    "limit": 10,
+    "locale": null,
+    "pages": 1,
+    "parse": true,
+    "parser_type": null,
+    "parsing_instructions": null,
+    "browser_instructions": null,
+    "render": null,
+    "url": null,
+    "query": "B08G9J44ZN",
+    "source": "amazon_product",
+    "start_page": 1,
+    "status": "faulted",
+    "storage_type": null,
+    "storage_url": null,
+    "subdomain": "www",
+    "content_encoding": "utf-8",
+    "updated_at": "2024-10-12 02:30:06",
+    "user_agent_type": "desktop",
+    "session_info": null,
+    "statuses": [],
+    "client_notes": null,
+    "_links": [
+      {
+        "rel": "self",
+        "href": "http://data.oxylabs.io/v1/queries/7250694172250762241",
+        "method": "GET"
+      },
+      {
+        "rel": "results",
+        "href": "http://data.oxylabs.io/v1/queries/7250694172250762241/results",
+        "method": "GET"
+      },
+      {
+        "rel": "results-content",
+        "href_list": [
+          "http://data.oxylabs.io/v1/queries/7250694172250762241/results/1/content"
+        ],
+        "method": "GET"
+      },
+      {
+        "rel": "results-html",
+        "href": "http://data.oxylabs.io/v1/queries/7250694172250762241/results?type=raw",
+        "method": "GET"
+      },
+      {
+        "rel": "results-content-html",
+        "href_list": [
+          "http://data.oxylabs.io/v1/queries/7250694172250762241/results/1/content?type=raw"
+        ],
+        "method": "GET"
+      },
+      {
+        "rel": "results-parsed",
+        "href": "http://data.oxylabs.io/v1/queries/7250694172250762241/results?type=parsed",
+        "method": "GET"
+      },
+      {
+        "rel": "results-content-parsed",
+        "href_list": [
+          "http://data.oxylabs.io/v1/queries/7250694172250762241/results/1/content?type=parsed"
+        ],
+        "method": "GET"
+      }
+    ]
+  }
+}
