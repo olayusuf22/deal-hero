@@ -17,7 +17,7 @@
                 <img class="product-image" src="{{ amz_best_product.url_image }}" alt="{{ amz_best_product.title }}">
                 <img class="icon-stamp" src="{% static '/icons/Icon-7-Hero-Choice.png' %}" alt="Hero Choice Tag">
             </div>
-            <section class='description-text'>    
+            <section class='product-text-container'>    
                 <p><strong>Price: </strong>{{ amz_best_product.currency }} {{ amz_best_product.price }}</p>
                 <p><strong>Rating: </strong>{{ amz_best_product.rating }}</p>
                 <p><strong>Reviews: </strong>{{ amz_best_product.reviews_count }}</p>
@@ -44,9 +44,11 @@
             <div class='product-card'>
                     <div class="product-titles">
                         <h3>{{ product.title }}</h2>
+                    </div>
+                    <div class="product-img-container">
                         <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">
                     </div>
-                    <div class="product-description">
+                    <section class="product-description">
                         <div class="logo-container">
                             <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
                             <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
@@ -67,7 +69,7 @@
                                     <button class="add-to-wishlist" type="submit" >Add To WishList</button>
                                 </form>
                             </section>
-                    </div>
+                    </section>
                 </div>
             {% endif %}
         {% endfor %}

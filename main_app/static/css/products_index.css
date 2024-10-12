@@ -8,26 +8,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "League Spartan", sans-serif;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.85);
 }
+
 .product-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
     background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
-    border-radius: 12px;
-    min-width: 320px;
-    max-width: 640px;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(3px);
+    border-radius: 12px;
+    min-width: 420px;
+    max-width: 80svw;
+    height: fit-content;
     margin-top: 24px;
     margin-bottom: 24px;
     padding: 0;
     padding-bottom: 12px;
-    padding-left: 12px;
-    padding-right: 12px;
+    overflow: hidden;
 }
 
 .product-titles {
@@ -47,104 +45,65 @@
     background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffffbf);
 }
 
-.product-titles h2 {
-    text-align: center;
-    margin: 1%;
-}
-
 .details-container {
-    width: 99%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    column-gap: 12px;
-    row-gap: 12px;
+    flex-wrap: wrap:
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .best-option-img-container {
-    display: grid;
-    grid-template-areas: stack;
     position: relative;
-    border-radius: 12px;
-    width: 90%;
+    border-radius: 12px 0 0 12px;
     overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    background: white;
+}
+
+.product-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    object-fit: contain;
+    width: 100%;
+    max-height: 100%;
 }
 
 .product-image {
-    grid-area: stack;
-    border-radius: 12px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.75);
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 100%;
+    max-height: 100%;
 }
 
 .icon-stamp {
-    grid-area: stack;
     width: 84px;
     position: absolute; 
     top: 0;
     right: 0;
 }
 
-.description-text {
+.product-text-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    font-size: medium;
-    background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
-    border-radius: 8px;
+    justify-content: center;
+    background: linear-gradient(to right, hsla(0, 0%, 67%, 0.85), hsla(0, 0%, 42%, 0.5));
+    border-radius: 0px 12px 12px 0px;
     padding: 12px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.75);
-}
-
-.description-text p {
-    padding: 2px;
-    margin: 4px 0 0 4px;
-}
-
-a {
-    display: block;
-    position:relative;
-    color:#f3f71f;
-    transition:0.5s;
-}
-  
- a:hover {
-    transform:scale(1.20);
-    opacity:1;
-    filter:blur(0);
-    text-decoration:none;
-    color:#fff;
-}
-  
-a:before {
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#b79c31;
-    transition:0.75s;
-    transform-origin:right;
-    transform:scaleX(0);
-    z-index:-1;
-}
-  
-a:hover:before {
-    transition:transform 0.5s;
-    transform-origin:left;
-    transform:scaleX(1);
+    word-wrap: break-word;
 }
 
 .other-options-carousel {
-    width: 95vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow-x: scroll;
+    width: 100vw;
+    padding-left: 12px;
     column-gap: 24px;
+    overflow-x: scroll;
+    scrollbar-color: gold;
+    scrollbar-width: thin;
 }
 
 .product-description {
@@ -152,7 +111,10 @@ a:hover:before {
     justify-content: space-around;
     align-items: center;
     column-gap: 12px;
-    width: 95%;
+    width: 100%;
+    margin-bottom: -12px;
+    padding-bottom: 12px;
+    background: linear-gradient(to bottom, hsla(0, 0%, 67%, 0.85), hsla(0, 0%, 42%, 0.5));
 }
 
 .logo-container {
