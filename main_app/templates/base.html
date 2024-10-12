@@ -22,6 +22,11 @@
         <ul>
           {% if user.is_authenticated %}
           <li>
+            <a class='nav-link' href="{% url 'wishlist' %}">
+              <img class='icon' src="{% static '/icons/Icon-8-Wishlist.png' %}">Wishlist
+            </a>
+          </li>
+          <li>
             <form method="POST" action="{% url 'logout' %}">
               {% csrf_token %}
               <button id="logout-button" class='nav-link' type="submit">
