@@ -17,15 +17,13 @@
                     <div class="wishlist-details-container">
                         <img class="product-image" src="{{ item.product_id.image_url }}" alt="{{ item.product_id.name }}">                      
                         <section class="description-text">
-                            <p><strong>Price: </strong>{{ item.product_id.price_drop_threshold }}</p>
+                            <p><strong>Price:$</strong>{{ item.product_id.price_drop_threshold }}</p>
                             <p><strong>Rating: </strong>{{ item.product_id.rating }}</p>
                             <p><strong>Category: </strong>{{ item.product_id.category }}</p>
                             <p><strong>In Stock: </strong>{{ item.product_id.in_stock }}</p>
                             <a href="{{ item.product_id.product_url }}" target="_blank">View Product</a>
-                            <form action="" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="remove-from-wishlist">Remove from Wishlist</button>
-                            </form>
+                                <a type="submit" class="remove-from-wishlist"
+                                href="{% url 'wishlist-delete' item.product_id.id %}">Remove from Wishlist</a>
                         </section>
                     </div>
                 </div>

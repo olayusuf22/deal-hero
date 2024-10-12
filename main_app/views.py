@@ -8,6 +8,7 @@ from .forms import SignUpForm
 from django.http import HttpResponse
 from pprint import pprint
 from .models import Product, Retailer, Wishlist, PriceHistory
+from django.views.generic.edit import DeleteView
 import urllib.parse
 import requests
 import re
@@ -217,4 +218,8 @@ def fetch_product_details(request, product_id):
 
         return redirect('wishlist')
     
-    return redirect('home')
+class DeleteProduct(LoginRequiredMixin, DeleteView):
+    model = Wishlist
+    template_name = 'products/product_confirm_delete.html'
+    success_url = '/wishlist/'
+    
