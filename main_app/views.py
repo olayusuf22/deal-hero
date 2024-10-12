@@ -161,13 +161,59 @@ def product_search(request):
 
     return redirect('home')
 
-@login_required
-def fetch_product_details(request, product_id):
+def fetch_product_details(product_asin, user):
+    payload = {
+        'source': 'amazon_product',
+        'domain': 'com',
+        'query': f'{product_asin}',
+        'parse': True,
+    }
+    response = requests.request(
+        'POST',
+        'https://realtime.oxylabs.io/v1/queries',
+        auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
+        json=payload,
+    )
+    data = response.json()
+    
+    product_name = data['results'][0]['content']['product_name']        
+    category = data['results'][0]['content'].get('category', [{}])[0].get('ladder', [{}])[0].get('name', 'Miscelaneous')        
+    product_url = data['results'][0]['content']['url']        
+    image_url = data['results'][0]['content']['images'][0]        
+    description = data['results'][0]['content']['description']        
+    rating = data['results'][0]['content']['rating']        
+    stock_value = data['results'][0]['content'].get('stock', "in stock")
+    in_stock = stock_value.lower() == 'in stock'
+    price = data['results'][0]['content']['price']        
+    retailer_name = data['results'][0].get('manufacturer', product_name.split()[0])
+    
+    retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
+    product, created = Product.objects.get_or_create(
+        name=product_name,
+        defaults={
+            'category': category,
+            'product_url': product_url,
+            'image_url': image_url,
+            'description': description,
+            'rating': rating,
+            'in_stock': in_stock,
+            'price_drop_threshold': 1,
+            'user': user,  # Associate the product with the user
+            'retailer': retailer
+        }
+    )
+
+    PriceHistory.objects.create(
+        product=product,
+        price=price
+    )
+    
+    return product
     if request.method == 'POST':
         payload = {
             'source': 'amazon_product',
             'domain': 'com',
-            'query': f'{product_id}',
+            'query': f'{product_asin}',
             'parse': True,
         }
         response = requests.request(
@@ -186,10 +232,9 @@ def fetch_product_details(request, product_id):
         rating = data['results'][0]['content']['rating']        
         stock_value = data['results'][0]['content'].get('stock', "in stock")
         in_stock = stock_value.lower() == 'in stock'
-        
-
         price = data['results'][0]['content']['price']        
         retailer_name = data['results'][0].get('manufacturer', product_name.split()[0])
+
         retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
         product, created = Product.objects.get_or_create(
             name=product_name,
@@ -217,7 +262,19 @@ def fetch_product_details(request, product_id):
         )
 
         return redirect('wishlist')
-    
+
+@login_required
+def add_to_wishlist(request, product_asin):
+    if request.method == 'POST':
+        product = fetch_product_details(product_asin, request.user)
+        
+        Wishlist.objects.get_or_create(
+            product_id=product,
+            user=request.user
+        )
+
+        return redirect('wishlist')
+
 class DeleteProduct(LoginRequiredMixin, DeleteView):
     model = Wishlist
     template_name = 'products/product_confirm_delete.html'

@@ -9,6 +9,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('search/', views.product_search, name='product_search'),
     path('wishlist/', views.WishlistView.as_view(), name='wishlist'),
-    path('product/<str:product_id>/fetch/', views.fetch_product_details, name='fetch-product-details'),
+    path('wishlist/<str:product_asin>/add/', views.add_to_wishlist, name='add-to-wishlist'),
     path('wishlist/<int:pk>/delete/', views.DeleteProduct.as_view(), name='wishlist-delete'),
 ]

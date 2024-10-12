@@ -29,7 +29,7 @@
                 {% endif %}
                 <p><strong> Product ID: </strong> {{ amz_best_product.asin }}</p>
                 <a href="https://www.amazon.com{{ amz_best_product.url }}">View on Amazon</a>
-                <form action="{% url 'fetch-product-details' amz_best_product.asin %}" method="post">
+                <form action="{% url 'add-to-wishlist' amz_best_product.asin %}" method="post">
                     {% csrf_token %} 
                     <button class="add-to-wishlist" type="submit" >Add To WishList</button>
                 </form>
@@ -64,7 +64,7 @@
                                     <p><strong>Amazon's Choice</strong></p>
                                 {% endif %}
                                 <p><strong> Product ID: </strong> {{ product.asin }}</p>
-                                <form action="{% url 'fetch-product-details' product.asin %}" method="post">
+                                <form action="{% url 'add-to-wishlist' product.asin %}" method="post">
                                     {% csrf_token %} 
                                     <button class="add-to-wishlist" type="submit" >Add To WishList</button>
                                 </form>
