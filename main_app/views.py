@@ -99,12 +99,6 @@ def product_search(request):
         for product in ggl_results:
             merchant_name = product['merchant']['name']
             product['logo_url'] = get_logo_url(merchant_name)
-        
-        print('')
-        print("-------------------------")
-        print("Google Results:", ggl_results)
-        print("-------------------------")
-        print('')
 
         valid_amz_products = [
             product for product in amz_results
