@@ -215,17 +215,6 @@ def fetch_product_details(request, product_id):
             user=request.user
         )
 
-        return HttpResponse(
-            f"Product details fetched and saved successfully for {product_name}.<br>"
-            f"Category: {category}.<br>"
-            f"URL: {product_url}.<br>"
-            f"Image URL: {image_url}.<br>"
-            f"Description: {description}.<br>"
-            f"Rating: {rating}.<br>"
-            f"Price: {price}.<br>"
-            f"In Stock: {in_stock}.<br>"
-            f"Price Drop Threshold: {product.price_drop_threshold}.<br>"
-            f"Retailer: {retailer_name}."
-        )
+        return redirect('wishlist')
     
     return redirect('home')
