@@ -42,7 +42,11 @@ class WishlistView(LoginRequiredMixin, ListView):
     context_object_name = 'wishlist_items'
 
     def get_queryset(self):
-        return Wishlist.objects.filter(user=self.request.user)
+        wishlist_items = Wishlist.objects.filter(user=self.request.user)
+        for item in wishlist_items:
+            latest_price = PriceHistory.objects.filter(product=item.product_id).order_by('-timestamp').first()
+            item.product_id.current_price = latest_price.price if latest_price else None
+        return wishlist_items
 
 def fetch_product_data(payload):
     response = requests.request(
