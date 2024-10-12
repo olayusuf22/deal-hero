@@ -10,11 +10,11 @@
     {% if wishlist_items %}
         <div class='wishlist-grid'>
             {% for item in wishlist_items %}
-                <div class='wishlist-product-card'>
+                <div class='product-card'>
                     <div class="product-titles">
                         <h3>{{ item.product_id.name }}</h3>
                     </div>
-                    <div class="details-container">
+                    <div class="wishlist-details-container">
                         <img class="product-image" src="{{ item.product_id.image_url }}" alt="{{ item.product_id.name }}">                      
                         <section class="description-text">
                             <p><strong>Price: </strong>{{ item.product_id.price_drop_threshold }}</p>
@@ -22,7 +22,7 @@
                             <p><strong>Category: </strong>{{ item.product_id.category }}</p>
                             <p><strong>In Stock: </strong>{{ item.product_id.in_stock }}</p>
                             <a href="{{ item.product_id.product_url }}" target="_blank">View Product</a>
-                            <form action="{% url 'remove-from-wishlist' item.id %}" method="post">
+                            <form action="" method="post">
                                 {% csrf_token %}
                                 <button type="submit" class="remove-from-wishlist">Remove from Wishlist</button>
                             </form>

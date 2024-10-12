@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm
@@ -32,6 +34,14 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+class WishlistView(LoginRequiredMixin, ListView):
+    model = Wishlist
+    template_name = 'products/wishlist.html'
+    context_object_name = 'wishlist_items'
+
+    def get_queryset(self):
+        return Wishlist.objects.filter(user=self.request.user)
 
 def fetch_product_data(payload):
     response = requests.request(
