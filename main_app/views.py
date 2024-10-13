@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
-from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import SignUpForm
 from django.http import HttpResponse
-from pprint import pprint
-from .models import Product, Retailer, Wishlist, PriceHistory
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView
+from .forms import SignUpForm
+from .models import Product, Retailer, Wishlist, PriceHistory
 import urllib.parse
 import requests
 import re
@@ -72,6 +71,11 @@ def extract_url(full_url):
     query_params = urllib.parse.parse_qs(parsed_url.query)
     return query_params.get('url', [full_url])[0]
 
+def format_top_review(review_text):
+    formatted_review = review_text.replace("\n", "<br>")
+    if formatted_review.endswith("<br>Read more"):
+        formatted_review = formatted_review[:-len("<br>Read more")]
+    return formatted_review
 
 def product_search(request):
     if request.method == 'POST':
@@ -180,7 +184,8 @@ def fetch_product_details(product_asin, user):
     )
     data = response.json()
     
-    product_name = data['results'][0]['content']['product_name']        
+    product_name = data['results'][0]['content']['product_name'] 
+    asin = data['results'][0]['content']['asin']     
     category = data['results'][0]['content'].get('category', [{}])[0].get('ladder', [{}])[0].get('name', 'Miscelaneous')        
     product_url = data['results'][0]['content']['url']        
     image_url = data['results'][0]['content']['images'][0]        
@@ -189,12 +194,21 @@ def fetch_product_details(product_asin, user):
     stock_value = data['results'][0]['content'].get('stock', "in stock")
     in_stock = stock_value.lower() == 'in stock'
     price = data['results'][0]['content']['price']        
-    retailer_name = data['results'][0].get('manufacturer', product_name.split()[0])
+    retailer_name = data['results'][0]['content'].get('manufacturer', product_name.split()[0])
+    more_images = data['results'][0]['content'].get('images', [])
+    amazon_choice = data['results'][0]['content'].get('amazon_choice', False)
+    is_prime_eligible = data['results'][0]['content'].get('is_prime_eligible', False)
+    bullet_points = data['results'][0]['content'].get('bullet_points', []).split('\n')
+    reviews_count = data['results'][0]['content'].get('reviews_count', 0)
+    top_review_raw = data['results'][0]['content'].get('top_review', '')
+    formatted_review = format_top_review(top_review_raw) if top_review_raw else ''
+    rating_stars_distribution = data['results'][0]['content'].get('rating_stars_distribution', {})
     
     retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
     product, created = Product.objects.get_or_create(
-        name=product_name,
+        name = product_name,
         defaults={
+            'asin': asin,
             'category': category,
             'product_url': product_url,
             'image_url': image_url,
@@ -202,8 +216,15 @@ def fetch_product_details(product_asin, user):
             'rating': rating,
             'in_stock': in_stock,
             'price_drop_threshold': 1,
-            'user': user,  # Associate the product with the user
-            'retailer': retailer
+            'user': user,
+            'retailer': retailer,
+            'more_images': more_images,
+            'amazon_choice': amazon_choice,
+            'is_prime_eligible': is_prime_eligible,
+            'bullet_points': bullet_points,
+            'reviews_count': reviews_count,
+            'top_review': formatted_review,
+            'rating_stars_distribution': rating_stars_distribution,
         }
     )
 
@@ -213,59 +234,6 @@ def fetch_product_details(product_asin, user):
     )
     
     return product
-    if request.method == 'POST':
-        payload = {
-            'source': 'amazon_product',
-            'domain': 'com',
-            'query': f'{product_asin}',
-            'parse': True,
-        }
-        response = requests.request(
-            'POST',
-            'https://realtime.oxylabs.io/v1/queries',
-            auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
-            json=payload,
-        )
-        data = response.json()
-        
-        product_name = data['results'][0]['content']['product_name']        
-        category = data['results'][0]['content'].get('category', [{}])[0].get('ladder', [{}])[0].get('name', 'Miscelaneous')        
-        product_url = data['results'][0]['content']['url']        
-        image_url = data['results'][0]['content']['images'][0]        
-        description = data['results'][0]['content']['description']        
-        rating = data['results'][0]['content']['rating']        
-        stock_value = data['results'][0]['content'].get('stock', "in stock")
-        in_stock = stock_value.lower() == 'in stock'
-        price = data['results'][0]['content']['price']        
-        retailer_name = data['results'][0].get('manufacturer', product_name.split()[0])
-
-        retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
-        product, created = Product.objects.get_or_create(
-            name=product_name,
-            defaults={
-                'category': category,
-                'product_url': product_url,
-                'image_url': image_url,
-                'description': description,
-                'rating': rating,
-                'in_stock': in_stock,
-                'price_drop_threshold': 1,
-                'user': request.user,
-                'retailer': retailer
-            }
-        )
-
-        PriceHistory.objects.create(
-            product=product,
-            price=price
-        )
-       
-        Wishlist.objects.get_or_create(
-            product_id=product,
-            user=request.user
-        )
-
-        return redirect('wishlist')
 
 @login_required
 def add_to_wishlist(request, product_asin):
@@ -283,4 +251,15 @@ class DeleteProduct(LoginRequiredMixin, DeleteView):
     model = Wishlist
     template_name = 'products/product_confirm_delete.html'
     success_url = '/wishlist/'
-    
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'products/product_detail.html'
+    context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.get_object()
+        latest_price = PriceHistory.objects.filter(product=product).order_by('-timestamp').first()
+        context['latest_price'] = latest_price.price if latest_price else None
+        return context
