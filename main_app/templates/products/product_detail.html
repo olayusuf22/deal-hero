@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/products_index.css' %}" />
+{% endblock %}
+{% block content %}
+
+<div class='product-detail-wrapper'>
+    <div class="product-card">
+        <div class="product-titles">
+            <h1>{{ product.name }}</h1>
+        </div>
+        <div class="details-container">
+            <div class="product-img-container">
+                <img class="product-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+            </div>
+            <section class='product-text-container'>    
+                <p><strong>Price: </strong>${{ latest_price }}</p>
+                <p><strong>Rating: </strong>{{ product.rating }}</p>
+                <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
+                <p><strong>Category: </strong>{{ product.category }}</p>
+                <p><strong>In Stock: </strong>{{ product.in_stock }}</p>
+                <p><strong>Description: </strong>{{ product.description }}</p>
+                <p><strong>ASIN: </strong>{{ product.asin }}</p>
+                <p><strong>Amazon Choice: </strong>{{ product.amazon_choice }}</p>
+                <p><strong>Prime Eligible: </strong>{{ product.is_prime_eligible }}</p>
+                <p><strong>Top Review: </strong>{{ product.top_review|safe }}</p>
+                <p><strong>Bullet Points:</strong></p>
+                <ul>
+                    {% for point in product.bullet_points %}
+                        <li>{{ point }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Ratings Distribution:</strong></p>
+                <ul>
+                    {% for distribution in product.rating_stars_distribution %}
+                        <li>
+                            {{ distribution.rating }} stars: 
+                            <meter value="{{ distribution.percentage }}" min="0" max="100">{{ distribution.percentage }}%</meter>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p><strong>More Images:</strong></p>
+                <div class="more-images">
+                    {% for image in product.more_images %}
+                        <img src="{{ image }}" alt="Additional image for {{ product.name }}">
+                    {% endfor %}
+                </div>
+                <a href="{{ product.product_url }}" target="_blank">View on Retailer</a>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
