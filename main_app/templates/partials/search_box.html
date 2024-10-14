@@ -1,0 +1,10 @@
+<div class="search-bar-container">
+    <form id="search-bar" action="{% url 'product_search' %}" method="post">
+      {% csrf_token %}
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" required="">
+            <label for="name" class="form__label">Your Favorite Product...</label>
+        </div>
+        <button type="submit" class="btn">Search</button>
+    </form>
+</div>

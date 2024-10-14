@@ -10,10 +10,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
     }
 
-    .subtitle {
+    .slogan {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -32,22 +31,4 @@
         padding: 12px;
         border-radius: 12px;
     }
-
-    #search-bar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-}
-
-.icon-and-legend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 8px;
-}
-
-.icon-and-legend img {
-    height: 52px;
 }

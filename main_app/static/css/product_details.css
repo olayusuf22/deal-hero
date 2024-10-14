@@ -1,0 +1,107 @@
+.product-detail-wrapper {
+    background-image: url('../images/BG\ 1\ -\ Sky.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.product-title {
+    display: flex;
+    width: 100%;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.product-and-details-container {
+    display: flex;
+    width: 85vw;
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+
+.product-card{
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    max-width: 50%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(3px);
+}
+
+.product-img-container {
+    background: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.product-img-container img {
+    max-height: 350px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.product-text-container {
+    background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
+    border-radius: 0 12px 12px 0;
+    width: 100%;
+    padding: 12px;
+}
+
+.about-this-item-card {
+    max-width: 80cqh;
+    padding: 12px;
+    line-height: 1.5;
+    background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+.more-images-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 12px;
+    background-color: white;
+}
+
+.more-images-container img {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.more-details-container {
+   display: flex;
+   justify-content: space-evenly;
+   
+}
+
+.text-details-card {
+    max-width: 60svw;
+    margin-top: 32px;
+    background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
+    border-radius: 12px;
+    object-position: center;
+    padding: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.85);
+    line-height: 2px;
+}
+
+.bullet-point {
+    list-style-type: disc;
+}
