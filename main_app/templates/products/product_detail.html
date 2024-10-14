@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/products_index.css' %}" />
+<link rel="stylesheet" href="{% static 'css/product_details.css' %}" />
 <script
       src="https://unpkg.com/htmx.org@2.0.3"
       integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq"
@@ -11,73 +11,88 @@
 {% block content %}
 
 <div class='product-detail-wrapper'>
-    <div class="product-card">
-        <div class="product-titles">
-            <h1>{{ product.name }}</h1>
+    <div class="product-title">
+        <h1>{{ product.name }}</h1>
+    </div>
+    <div class="product-and-details-container">
+        <div class="product-card">
+                <div class="product-img-container">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                </div>
+                <section class='product-text-container'>    
+                    <p><strong>Price: </strong>${{ latest_price }}</p>
+                    <p><strong>Rating: </strong>{{ product.rating }}</p>
+                    <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
+                    <p><strong>Category: </strong>{{ product.category }}</p>
+                    <p><strong>In Stock: </strong>{{ product.in_stock }}</p>
+                    <p><strong>Description: </strong>{{ product.description }}</p>
+                    <p><strong>ASIN: </strong>{{ product.asin }}</p>
+                    <p><strong>Amazon Choice: </strong>{{ product.amazon_choice }}</p>
+                    <p><strong>Prime Eligible: </strong>{{ product.is_prime_eligible }}</p>
+                    <a href="{{ product.product_url }}" target="_blank">View on Retailer</a>
+                </section>
         </div>
-        <div class="details-container">
-            <div class="product-img-container">
-                <img class="product-image" src="{{ product.image_url }}" alt="{{ product.name }}">
-            </div>
-            <section class='product-text-container'>    
-                <p><strong>Price: </strong>${{ latest_price }}</p>
-                <p><strong>Rating: </strong>{{ product.rating }}</p>
-                <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
-                <p><strong>Category: </strong>{{ product.category }}</p>
-                <p><strong>In Stock: </strong>{{ product.in_stock }}</p>
-                <p><strong>Description: </strong>{{ product.description }}</p>
-                <p><strong>ASIN: </strong>{{ product.asin }}</p>
-                <p><strong>Amazon Choice: </strong>{{ product.amazon_choice }}</p>
-                <p><strong>Prime Eligible: </strong>{{ product.is_prime_eligible }}</p>
-                <p><strong>Top Review: </strong>{{ product.top_review|safe }}</p>
-                <p><strong>Bullet Points:</strong></p>
+    </div>
+
+    </div>
+        <div class="more-images-container">
+            {% for image in product.more_images %}
+               <a href="{{ image }}" target="_blank"><img src="{{ image }}" alt="Additional image for {{ product.name }}"></a>
+            {% endfor %}
+        </div>
+        <section class="more-details-container">
+            <div class="about-this-item-card">
+                <p><strong>About This Item:</strong></p>
                 <ul>
                     {% for point in product.bullet_points %}
-                        <li>{{ point }}</li>
-                    {% endfor %}
+                        <li class="bullet-point">{{ point }}</li>
+                        {% endfor %}
                 </ul>
+            </div>
+            <div class="about-this-item-card">
+                <p><strong>Top Review: </strong>{{ product.top_review|safe }}</p>
+            </div>
+            
+            <div class="text-details-card">
                 <p><strong>Ratings Distribution:</strong></p>
                 <ul>
                     {% for distribution in product.rating_stars_distribution %}
-                        <li>
-                            {{ distribution.rating }} stars: 
-                            <meter value="{{ distribution.percentage }}" min="0" max="100">{{ distribution.percentage }}%</meter>
-                        </li>
+                    <li>
+                    {{ distribution.rating }} stars: 
+                        <meter value="{{ distribution.percentage }}" min="0" max="100">{{ distribution.percentage }}%</meter>
+                    </li>
                     {% endfor %}
                 </ul>
-                <p><strong>More Images:</strong></p>
-                <div class="more-images">
-                    {% for image in product.more_images %}
-                        <img src="{{ image }}" alt="Additional image for {{ product.name }}">
-                    {% endfor %}
-                </div>
-                <a href="{{ product.product_url }}" target="_blank">View on Retailer</a>
-            </section>
-        </div>
-    </div>
-    <div class="price-history">
-        <h2>Price History</h2>
-        <table id="price-history-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for entry in price_history %}
-                    <tr>
-                        <td>{{ entry.timestamp }}</td>
-                        <td>${{ entry.price }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <form hx-post="{% url 'update-price' product.id %}" hx-target="#price-history-table tbody" hx-swap="innerHTML">
-        {% csrf_token %}
-        <button type="submit">🔃 Check Latest Price</button>
-    </form>
-    </div>
+            </div>
+        </section>
+
+        <section class="price-history-container">
+            <div class="price-history">
+                <h2>Price History</h2>
+                <table id="price-history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in price_history %}
+                            <tr>
+                                <td>{{ entry.timestamp }}</td>
+                                <td>${{ entry.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <form hx-post="{% url 'update-price' product.id %}" hx-target="#price-history-table tbody" hx-swap="innerHTML">
+                {% csrf_token %}
+                <button type="submit">🔃 Check Latest Price</button>
+            </form>
+            </div>
+        </section>
+
+        
 </div>
 {% endblock %}
