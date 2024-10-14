@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -266,3 +267,27 @@ class ProductDetail(DetailView):
         context['price_history'] = price_history
         return context
     
+def update_price(request, pk):
+    product = Product.objects.get(pk=pk)
+    current_price = PriceHistory.objects.filter(product=product).order_by('-timestamp').first()
+    
+    payload = {
+        'source': 'amazon_pricing',
+        'domain': 'com',
+        'query': product.asin,
+        'parse': True,
+    }
+    response = requests.request(
+        'POST',
+        'https://realtime.oxylabs.io/v1/queries',
+        auth=(os.environ.get('OXYLABS_USERNAME'), os.environ.get('OXYLABS_PASSWORD')),
+        json=payload,
+    )
+    data = response.json()
+    pricing_info = data['results'][0]['content']['pricing'][0].get('price', current_price)
+    
+    if pricing_info:
+        latest_price = pricing_info
+        PriceHistory.objects.create(product=product, price=latest_price)
+    price_history = PriceHistory.objects.filter(product=product).order_by('-timestamp')
+    return render(request, 'htmx/update_price_table.html', {'price_history': price_history})

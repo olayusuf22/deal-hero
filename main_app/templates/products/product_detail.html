@@ -2,6 +2,11 @@
 {% load static %} 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/products_index.css' %}" />
+<script
+      src="https://unpkg.com/htmx.org@2.0.3"
+      integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq"
+      crossorigin="anonymous"
+    ></script>
 {% endblock %}
 {% block content %}
 
@@ -52,13 +57,27 @@
     </div>
     <div class="price-history">
         <h2>Price History</h2>
-        <ul>
-            {% for entry in price_history %}
-                <li>{{ entry.timestamp }}: ${{ entry.price }}</li>
-            {% endfor %}
-        </ul>
+        <table id="price-history-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in price_history %}
+                    <tr>
+                        <td>{{ entry.timestamp }}</td>
+                        <td>${{ entry.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-
+    <form hx-post="{% url 'update-price' product.id %}" hx-target="#price-history-table tbody" hx-swap="innerHTML">
+        {% csrf_token %}
+        <button type="submit">🔃 Check Latest Price</button>
+    </form>
+    </div>
 </div>
-
 {% endblock %}

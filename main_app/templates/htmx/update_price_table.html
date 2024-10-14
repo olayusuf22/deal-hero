@@ -1,0 +1,8 @@
+<tbody>
+    {% for entry in price_history %}
+        <tr>
+            <td>{{ entry.timestamp }}</td>
+            <td>${{ entry.price }}</td>
+        </tr>
+    {% endfor %}
+</tbody>
