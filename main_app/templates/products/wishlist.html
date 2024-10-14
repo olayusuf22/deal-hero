@@ -6,7 +6,10 @@
 {% block content %}
 
 <div class='wishlist-wrapper'>
-    <h1>Your Wishlist</h1>
+    <div class="icon-and-legend">
+        <img class="medium-icon" src="{% static 'icons/Icon-8-Wishlist.png' %}" alt="Wishlist Icon" />
+        <h1>Your Wishlist</h1>
+    </div>
     {% if wishlist_items %}
         <div class='wishlist-grid'>
             {% for item in wishlist_items %}
@@ -15,17 +18,23 @@
                         <h3>{{ item.product_id.name }}</h3>
                     </div>
                     <div class="wishlist-details-container">
-                        <img class="product-image" src="{{ item.product_id.image_url }}" alt="{{ item.product_id.name }}">                      
-                        <section class="description-text">
-                            <p><strong>Current Price: $</strong>{{ item.product_id.current_price }}</p>
-                            <p><strong>Rating: </strong>{{ item.product_id.rating }}</p>
-                            <p><strong>Category: </strong>{{ item.product_id.category }}</p>
-                            <p><strong>In Stock: </strong>{{ item.product_id.in_stock }}</p>
-                            <a href="{{ item.product_id.product_url }}" target="_blank">Buy Now</a>
-                            <a href="{% url 'product-detail' item.product_id.id %}">View Details</a>
-                                <a type="submit" class="remove-from-wishlist"
-                                href="{% url 'wishlist-delete' item.product_id.id %}">Remove from Wishlist</a>
-                        </section>
+                        <div class="product-img-container">
+                            <img src="{{ item.product_id.image_url }}" alt="{{ item.product_id.name }}">
+                        </div>
+                        <div class="description-and-links-container">
+                            <section class="description-text">
+                                <p><strong>Current Price: $</strong>{{ item.product_id.current_price }}</p>
+                                <p><strong>Rating: </strong>{{ item.product_id.rating }}</p>
+                                <p><strong>Category: </strong>{{ item.product_id.category }}</p>
+                                <p><strong>In Stock: </strong>{{ item.product_id.in_stock }}</p>
+                            </section>
+                            <section class="action-links">
+                                <a href="{{ item.product_id.product_url }}" target="_blank">Buy Now</a>
+                                <a href="{% url 'product-detail' item.product_id.id %}">View Details</a>
+                                    <a type="submit" class="remove-from-wishlist"
+                                    href="{% url 'wishlist-delete' item.product_id.id %}">Remove from Wishlist</a>
+                            </section>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

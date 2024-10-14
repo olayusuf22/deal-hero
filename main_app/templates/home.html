@@ -8,7 +8,7 @@
     <div class='hero-image'>
       <img src="{% static 'images/Deal-Hero-Logo.png' %}" alt="Hero Logo" />
     </div>
-    <div class="subtitle">
+    <div class="slogan">
       <div class='icon-and-legend'>
         <img src="{% static 'icons/Icon-3-Magnifier.png' %}" alt="Magnifying Glass" />
         <h2>Track</h2>
@@ -26,11 +26,10 @@
   <div class="hero-description">
     <h3>Deal Hero helps you track prices for your favorite products across top retailers like Amazon, BestBuy, and Walmart.</h3>
   </div>
-  <div id="search-bar">
-    <form action="{% url 'product_search' %}" method="post">
-      {% csrf_token %}
-    <input name="query" type="text" id="search-input" placeholder="Search for products..." />
-    <button type="submit" id="search-button">Search</button>
+ 
+    {% comment %} <input name="query" type="text" id="search-input" placeholder="Search for products..." /> {% endcomment %}
+    {% include "partials/search_box.html" %}
+    {% comment %} <button type="submit" class="btn">Search</button> {% endcomment %}
     </form>
   </div>
 </div>

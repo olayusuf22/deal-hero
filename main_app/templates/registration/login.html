@@ -15,8 +15,12 @@
         <form class="login-form" action="{% url 'home' %}" method="post">
         {% csrf_token %} {{ form.as_p }}
         <input type="hidden" name="next" value="{{ next }}" />
-        <button class="submit-button" type="submit">▶ Log In</button>
+        <button class="btn" type="submit">▶ Log In</button>
       </form>
+      <div class="signup-link-container">
+        <p> Not a hero yet?</p>
+        <a href="{% url 'signup' %}"> Sign up!</a>
+      </div>
     </section>
   {% endif %}
 </div>
