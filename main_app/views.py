@@ -261,5 +261,8 @@ class ProductDetail(DetailView):
         context = super().get_context_data(**kwargs)
         product = self.get_object()
         latest_price = PriceHistory.objects.filter(product=product).order_by('-timestamp').first()
+        price_history = PriceHistory.objects.filter(product=product).order_by('-timestamp')
         context['latest_price'] = latest_price.price if latest_price else None
+        context['price_history'] = price_history
         return context
+    

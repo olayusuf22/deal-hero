@@ -50,6 +50,15 @@
             </section>
         </div>
     </div>
+    <div class="price-history">
+        <h2>Price History</h2>
+        <ul>
+            {% for entry in price_history %}
+                <li>{{ entry.timestamp }}: ${{ entry.price }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </div>
 
 {% endblock %}
