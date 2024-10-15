@@ -1,0 +1,137 @@
+{
+  "info": {
+    "_postman_id": "8bb15fe2-6c9c-4059-a32e-b0a6a60c1d0f",
+    "name": "Scheduler",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create a New Schedule",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"cron\": \"* * * * *\", \n    \"items\":\n    [ \n        {\"source\": \"universal\", \"url\": \"https://example.com\", \"callback_url\": \"https://callback.com/callback_listener\"},\n        {\"source\": \"universal\", \"url\": \"https://example.com\", \"storage_type\": \"s3\", \"storage_url\": \"s3://some.s3.bucket/path\"},\n        {\"source\": \"universal\", \"url\": \"https://example.com\", \"callback_url\": \"https://callback.com/callback_listener\", \"storage_type\": \"s3\", \"storage_url\": \"s3://some.s3.bucket/path\"}\n    ],\n    \"end_time\": \"2022-12-21 12:34:45\",\n    \"callback_url\": \"https://webhook.site/c7ddeabf-4557-45ee-8c4e-f1acb452aaa9\"\n}"
+        },
+        "url": {
+          "raw": "https://data.oxylabs.io/v1/schedules",
+          "protocol": "https",
+          "host": [
+            "data",
+            "oxylabs",
+            "io"
+          ],
+          "path": [
+            "v1",
+            "schedules"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Schedule Info",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "https://data.oxylabs.io/v1/schedules/{id}",
+          "protocol": "https",
+          "host": [
+            "data",
+            "oxylabs",
+            "io"
+          ],
+          "path": [
+            "v1",
+            "schedules",
+            "{id}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Change Schedule State",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"active\": false}"
+        },
+        "url": {
+          "raw": "https://data.oxylabs.io/v1/schedules/2969545542374515910/state",
+          "protocol": "https",
+          "host": [
+            "data",
+            "oxylabs",
+            "io"
+          ],
+          "path": [
+            "v1",
+            "schedules",
+            "2969545542374515910",
+            "state"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "ENTER_YOUR_PASSWORD",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "ENTER_YOUR_USERNAME",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

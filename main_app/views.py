@@ -108,6 +108,7 @@ def product_search(request):
         }
 
         amz_data = fetch_product_data(amazon_payload)
+        print(f'Fetched Amazon data: {amz_data}')
         ggl_data = fetch_product_data(google_payload)
                                                      
         amz_results = amz_data['results'][0]['content']['results']['organic']
