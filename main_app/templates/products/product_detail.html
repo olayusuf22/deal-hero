@@ -74,6 +74,7 @@
                         <tr>
                             <th>Date</th>
                             <th>Price</th>
+                            <th>Sold By:</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,6 +82,7 @@
                             <tr>
                                 <td>{{ entry.timestamp }}</td>
                                 <td>${{ entry.price }}</td>
+                                <td>{{ entry.retailer.name }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
