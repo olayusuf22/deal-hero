@@ -1,0 +1,248 @@
+{
+  "results": [
+    {
+      "id": 144023078,
+      "job_id": "7251742464275408897",
+      "page": 1,
+      "status_code": 200,
+      "content": {
+        "asin": "B0CN9SD8JF",
+        "asin_in_url": "B0CN9SD8JF",
+        "page": 1,
+        "parse_status_code": 12000,
+        "pricing": [
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 36975,
+            "seller": "MetroShoe Warehouse",
+            "seller_id": "A2WU6JHR5PVKH1",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A2WU6JHR5PVKH1&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_0"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from END80",
+            "price": 96.04,
+            "price_shipping": 0,
+            "rating_count": 1097,
+            "seller": "END80",
+            "seller_id": "ASYTRLNACMZUN",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=ASYTRLNACMZUN&isAmazonFulfilled=0&asin=B0CN9SD8JF&ref_=olp_merch_name_1"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from RealSale LLC",
+            "price": 97.52,
+            "price_shipping": 0,
+            "rating_count": 34,
+            "seller": "RealSale LLC",
+            "seller_id": "A24AOXR5J0ALYA",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A24AOXR5J0ALYA&isAmazonFulfilled=0&asin=B0CN9SD8JF&ref_=olp_merch_name_2"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 97.8,
+            "price_shipping": 0,
+            "rating_count": 757,
+            "seller": "Sunshining99",
+            "seller_id": "A3SXIOP3BE8B3N",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A3SXIOP3BE8B3N&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_3"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from CCC Fashion",
+            "price": 97.95,
+            "price_shipping": 0,
+            "rating_count": 15,
+            "seller": "CCC Fashion",
+            "seller_id": "A3SVJC563ROQ98",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A3SVJC563ROQ98&isAmazonFulfilled=0&asin=B0CN9SD8JF&ref_=olp_merch_name_4"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 316027,
+            "seller": "OutdoorEquipped",
+            "seller_id": "A7ULJO7NAWM0L",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A7ULJO7NAWM0L&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_5"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 1164,
+            "seller": "ContinentalVentures",
+            "seller_id": "A2855ZHAXWNNHM",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A2855ZHAXWNNHM&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_6"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 1911,
+            "seller": "Urban Wilderness",
+            "seller_id": "A1JLZLEJAGJ0B8",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A1JLZLEJAGJ0B8&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_7"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 26092,
+            "seller": "CWDS",
+            "seller_id": "A6Y8EA3VZD1DF",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A6Y8EA3VZD1DF&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_8"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 20876,
+            "seller": "Pike To Peak",
+            "seller_id": "A33TBMAWGCISEI",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=A33TBMAWGCISEI&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_9"
+          },
+          {
+            "condition": "New",
+            "currency": "USD",
+            "delivery": "Ships from Amazon.com",
+            "price": 99,
+            "price_shipping": 0,
+            "rating_count": 1240,
+            "seller": "Mountain Sports",
+            "seller_id": "ADPISMALUMQMZ",
+            "seller_link": "/gp/aag/main?ie=UTF8&seller=ADPISMALUMQMZ&isAmazonFulfilled=1&asin=B0CN9SD8JF&ref_=olp_merch_name_10"
+          }
+        ],
+        "review_count": 114,
+        "title": "THE NORTH FACE Borealis Commuter Laptop Backpack, TNF Black/TNF Black-NPF, One Size",
+        "url": "https://www.amazon.com/gp/aod/ajax/ref=dp_aod_unknown_mbc?asin=B0CN9SD8JF&pageno=1"
+      },
+      "url": "https://www.amazon.com/gp/aod/ajax/ref=dp_aod_unknown_mbc?asin=B0CN9SD8JF&pageno=1",
+      "created_at": "2024-10-14 23:55:37",
+      "updated_at": "2024-10-14 23:55:37",
+      "_request": null,
+      "_response": null,
+      "session_info": null
+    }
+  ],
+  "job": {
+    "id": "7251742464275408897",
+    "client_id": 82573,
+    "status": "done",
+    "source": "amazon_pricing",
+    "query": "B0CN9SD8JF",
+    "url": null,
+    "domain": "com",
+    "limit": 10,
+    "locale": null,
+    "geo_location": null,
+    "user_agent_type": "desktop",
+    "callback_url": "http://waiter.oxylabs.io:9080/v1/callback/eyJzY2hlZHVsZSI6eyJpZCI6MjczNjQzMzgzNjc3NjcyNjAwNCwiY2xpZW50IjoiYmF0bWFuX1dJM2c4In0sIml0ZW0iOnsiaWQiOjc2NDc4MTgsInBheWxvYWQiOnt9fSwicnVuIjp7ImlkIjoxNjMyNzAxNX0sImpvYiI6eyJpZCI6bnVsbCwiY3JlYXRlX3N0YXR1c19jb2RlIjpudWxsLCJyZXN1bHRfc3RhdHVzIjpudWxsLCJjcmVhdGVkX2F0IjpudWxsLCJyZXN1bHRfY3JlYXRlZF9hdCI6bnVsbH19",
+    "pages": 1,
+    "start_page": 1,
+    "parse": 1,
+    "parser_type": null,
+    "parsing_instructions": null,
+    "browser_instructions": null,
+    "render": null,
+    "subdomain": "www",
+    "storage_url": "s3://deal-hero/7251742464275408897.json",
+    "storage_type": "s3",
+    "content_encoding": "utf-8",
+    "context": [
+      {
+        "key": "force_headers",
+        "value": null
+      },
+      {
+        "key": "force_cookies",
+        "value": false
+      },
+      {
+        "key": "hc_policy",
+        "value": null
+      },
+      {
+        "key": "condition",
+        "value": null
+      },
+      {
+        "key": "check_empty_geo",
+        "value": null
+      },
+      {
+        "key": "safe_search",
+        "value": true
+      }
+    ],
+    "session_info": null,
+    "created_at": "2024-10-14 23:55:34",
+    "updated_at": "2024-10-14 23:55:34",
+    "client": {
+      "id": 82573,
+      "name": "batman_WI3g8",
+      "rate_limits": [
+        {
+          "id": 214774,
+          "client_id": 82573,
+          "job_source": "universal",
+          "origin": null,
+          "mask": 90,
+          "measurement": "sec",
+          "limit": 10,
+          "limit_interval": 10,
+          "precision": 1,
+          "label": "unified_web_scraper_api_free_trial_render_requests_2024_10_09_18_38_57",
+          "created_at": "2024-10-09 18:38:57"
+        },
+        {
+          "id": 214773,
+          "client_id": 82573,
+          "job_source": "universal",
+          "origin": null,
+          "mask": 50,
+          "measurement": "sec",
+          "limit": 50,
+          "limit_interval": 10,
+          "precision": 1,
+          "label": "unified_web_scraper_api_free_trial_requests_2024_10_09_18_38_55",
+          "created_at": "2024-10-09 18:38:55"
+        },
+        {
+          "id": 214772,
+          "client_id": 82573,
+          "job_source": "universal",
+          "origin": null,
+          "mask": 52,
+          "measurement": "week",
+          "limit": 5000,
+          "limit_interval": 1,
+          "precision": 1,
+          "label": "unified_web_scraper_api_free_trial_results_2024_10_09_18_38_55",
+          "created_at": "2024-10-09 18:38:55"
+        }
+      ]
+    },
+    "client_notes": null
+  }
+}
