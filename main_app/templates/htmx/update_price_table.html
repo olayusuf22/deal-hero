@@ -3,6 +3,7 @@
         <tr>
             <td>{{ entry.timestamp }}</td>
             <td>${{ entry.price }}</td>
+            <td>{{ entry.retailer.name }}</td>
         </tr>
     {% endfor %}
 </tbody>
