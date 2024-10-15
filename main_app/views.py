@@ -287,8 +287,31 @@ def update_price(request, pk):
     data = response.json()
     pricing_info = data['results'][0]['content']['pricing'][0].get('price', current_price)
     
-    if pricing_info:
-        latest_price = pricing_info
-        PriceHistory.objects.create(product=product, price=latest_price)
+    sellers = {}
+    for seller_info in data['results'][0]['content']['pricing']:
+        seller_name = seller_info['seller']
+        sellers[seller_name] = {
+            'seller_name': seller_name,
+            'seller_link': seller_info['seller_link'],
+            'price': seller_info['price'],
+        }
+
+    best_seller = min(sellers, key=lambda x: sellers[x]['price'])
+    seller = sellers[best_seller]
+
+    retailer, created = Retailer.objects.get_or_create(
+        name=seller['seller_name'],
+        defaults={'merchant_url': seller['seller_link']}
+    )
+    
+    # Now that we have the best seller, we can update our PriceHistory model, and write the price, along with the retailer.
+    PriceHistory.objects.create(
+        product=product,
+        price=seller['price'],
+        retailer=retailer
+    )
     price_history = PriceHistory.objects.filter(product=product).order_by('-timestamp')
-    return render(request, 'htmx/update_price_table.html', {'price_history': price_history})
+    return render(request, 'htmx/update_price_table.html', {
+        'price_history': price_history,
+        'retailer': retailer,
+        })
