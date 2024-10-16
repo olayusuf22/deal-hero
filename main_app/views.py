@@ -108,7 +108,6 @@ def product_search(request):
         }
 
         amz_data = fetch_product_data(amazon_payload)
-        print(f'Fetched Amazon data: {amz_data}')
         ggl_data = fetch_product_data(google_payload)
                                                      
         amz_results = amz_data['results'][0]['content']['results']['organic']
@@ -161,6 +160,18 @@ def product_search(request):
 
         ggl_sorted_products = sorted(valid_ggl_products, key=sorting_key, reverse=True)
         ggl_best_product = ggl_sorted_products[0] if ggl_sorted_products else None
+        
+        # rating_width is the value used to dynamically calculate the width of the rating stars ⭐⭐⭐.
+        amz_best_product['rating_width'] = float(amz_best_product['rating']) * 20
+        ggl_best_product['rating_width'] = float(ggl_best_product['rating']) * 20 if ggl_best_product else 0
+
+        for product in amz_sorted_products:
+            if product.get('rating'):
+                product['rating_width'] = float(product['rating']) * 20
+
+        for product in ggl_sorted_products:
+            if product.get('rating'):
+                product['rating_width'] = float(product['rating']) * 20
 
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
@@ -205,6 +216,11 @@ def fetch_product_details(product_asin, user):
     top_review_raw = data['results'][0]['content'].get('top_review', '')
     formatted_review = format_top_review(top_review_raw) if top_review_raw else ''
     rating_stars_distribution = data['results'][0]['content'].get('rating_stars_distribution', {})
+
+    # The rating_width is the value used to render the star ratings in the templates dynamically ⭐⭐⭐.
+    rating_width = float(rating) * 20
+    # print the rating width
+    print(f'This is the rating_width: {rating_width}')
     
     retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
     product, created = Product.objects.get_or_create(
@@ -216,6 +232,7 @@ def fetch_product_details(product_asin, user):
             'image_url': image_url,
             'description': description,
             'rating': rating,
+            'rating_width': rating_width,
             'in_stock': in_stock,
             'price_drop_threshold': 1,
             'user': user,
@@ -304,7 +321,6 @@ def update_price(request, pk):
         defaults={'merchant_url': seller['seller_link']}
     )
     
-    # Now that we have the best seller, we can update our PriceHistory model, and write the price, along with the retailer.
     PriceHistory.objects.create(
         product=product,
         price=seller['price'],

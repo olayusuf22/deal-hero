@@ -8,6 +8,7 @@ class Product(models.Model):
     image_url = models.URLField()   
     description = models.TextField(null=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1)
+    rating_width = models.IntegerField(null=True, default=75)
     in_stock = models.BooleanField('In Stock', default=True)
     price_drop_threshold = models.DecimalField(max_digits=6, decimal_places=2)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
