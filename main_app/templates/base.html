@@ -6,9 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/search_box.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/UIverse-imports.css' %}" />
     {% comment %} TODO: Add Favicon: <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" /> {% endcomment %}
     <title>Deal Hero</title>
+    <script
+      src="https://unpkg.com/htmx.org@2.0.3"
+      integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/c74386571e.js" crossorigin="anonymous"></script>
     {% block head %} 
     {% endblock %}
   </head>

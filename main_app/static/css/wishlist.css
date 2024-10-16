@@ -12,12 +12,12 @@
 }
 
 .wishlist-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: minmax(160px, auto);
-    width: 80vw;
-    gap: 24px;
-    padding: 8px;
+    flex-direction: revert;
+    display: flex;
+    max-width: 92vw;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 
@@ -28,12 +28,14 @@
     align-items: center;
     background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
     border-radius: 12px;
-    max-width: 33svw;
+    min-width: 420px;
+    max-width: 18svw;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(3px);
     margin-top: 12px;
     margin-bottom: 12px;
     padding: 0;
+    overflow: hidden;
 }
 
 .product-img-container {
@@ -41,13 +43,21 @@
     justify-content: center;
     align-items: center;
     background: white;
+    object-fit: contain;
+    height: 100%;
     width: 100%;
 }
 
-.product-img-container img {
-    grid-area: stack;
-    max-width: 25svw;
-    max-height: 20svh;
+/* select only the first child of .product-img-container */
+.product-img-container > :first-child {
+    max-height: 25cqh;
+    max-width: 100%;
+}
+
+/* Set the position of.sold-out-stamp to be at the right and bottom of it's parent container */
+.sold-out-stamp {
+    width: 120px;
+    position:absolute;
 }
 
 .product-titles {
@@ -84,8 +94,9 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
-    padding: 12px;
+    background: linear-gradient(to right, rgba(172, 172, 172, 0.5), rgba(107, 107, 107, 0.85));
+    padding: 12px 0 12px 0;
+    column-gap: 8px
 }
 
 .description-text {
@@ -100,37 +111,9 @@
     margin: 4px 0 0 4px;
 }
 
-a {
-    display: block;
-    position:relative;
-    color:#f3f71f;
-    transition:0.5s;
+.action-links {
+    line-height: 1.75;
+    padding: 0 4px 0 4px;
 }
-  
- a:hover {
-    transform:scale(1.20);
-    opacity:1;
-    filter:blur(0);
-    text-decoration:none;
-    color:#fff;
-}
-  
-a:before {
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#b79c31;
-    transition:0.75s;
-    transform-origin:right;
-    transform:scaleX(0);
-    z-index:-1;
-}
-  
-a:hover:before {
-    transition:transform 0.5s;
-    transform-origin:left;
-    transform:scaleX(1);
-}
+
+
