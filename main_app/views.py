@@ -348,7 +348,7 @@ def deals_of_the_day(request):
         'parse': True,
         'start_page': 1,
         'pages': 1,
-        'query': 'deals of the day electronics',
+        'query': 'deals of the day Garden',
     }
     data = fetch_product_data(payload)
     
@@ -362,8 +362,8 @@ def deals_of_the_day(request):
             product.get('price'),
             product.get('title'),
             product.get('url_image'),
-            # get only products that have a strike through price different then null
             product.get('price_strikethrough'),
+            product.get('reviews_count') > 10,
             ])
         ]
     
@@ -376,7 +376,8 @@ def deals_of_the_day(request):
             discount = (1 - price / strike_through_price) * 100
         else:
             discount = 0
-        product['discount'] = discount
+
+        product['discount'] = int(round(discount))
         product['rating_width'] = float(product['rating']) * 20
         product['logo_url'] = get_logo_url('Amazon.com')
         

@@ -46,13 +46,6 @@
     padding: 8px 0 8px 0;
 }
 
-.details-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
 .best-option-img-container {
     position: relative;
     overflow: hidden;
@@ -63,6 +56,14 @@
     display: flex;
     justify-content: center;
 }
+
+.details-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 
 .product-img-container {
     display: flex;
