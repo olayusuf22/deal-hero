@@ -1,0 +1,1 @@
+web: gunicorn deal_hero.wsgi
