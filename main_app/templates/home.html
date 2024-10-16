@@ -27,8 +27,24 @@
     <h3>Deal Hero helps you track prices for your favorite products across top retailers like Amazon, BestBuy, and Walmart.</h3>
   </div>
     {% include "partials/search_box.html" %}
-    
-  </div>
+
+    <div class="deals-section">
+      <h2>Deals of the Day</h2>
+  
+      {% if deals_of_the_day %}
+        <div class="deals-container">
+          {% for deal in deals_of_the_day %}
+            <div class="deal-card">
+              <h3>{{ deal.title }}</h3>
+              <p>Price: {{ deal.price }}</p>
+              <a href="{{ deal.link }}" target="_blank">View Deal</a>
+              <img class="product-image" src="{{ deal.url_image }}" alt="{{ deal.title }}">
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>No deals available at the moment.</p>
+      {% endif %}
 </div>
 
 {% endblock %}
