@@ -20,6 +20,12 @@ def about(request):
 class Home(LoginView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['deals_of_the_day'] = deals_of_the_day(self.request)
+        print('This is the deals of the day:', context['deals_of_the_day'])
+        return context
+
 class Login(LoginView):
     template_name = 'login.html'
     
@@ -331,3 +337,49 @@ def update_price(request, pk):
         'price_history': price_history,
         'retailer': retailer,
         })
+    
+def deals_of_the_day(request):
+    if request.method == 'POST':
+        category_id = request.POST.get('query')
+    payload = {
+        'source': 'amazon_search',
+        'domain': 'com',
+        'domain_name': 'usa',
+        'parse': True,
+        'start_page': 1,
+        'pages': 1,
+        'query': 'deals of the day electronics',
+    }
+    data = fetch_product_data(payload)
+    
+    deals_of_the_day = data['results'][0]['content']['results']['organic']
+    
+    valid_deal_products = [
+        product for product in deals_of_the_day
+        if all([
+            product.get('url'),
+            product.get('asin'),
+            product.get('price'),
+            product.get('title'),
+            product.get('url_image'),
+            # get only products that have a strike through price different then null
+            product.get('price_strikethrough'),
+            ])
+        ]
+    
+    for product in valid_deal_products:
+        price = product.get('price')
+        strike_through_price = product.get('price_strikethrough')
+        product['price'] = price
+        product['strike_through_price'] = strike_through_price
+        if strike_through_price and strike_through_price > 0:
+            discount = (1 - price / strike_through_price) * 100
+        else:
+            discount = 0
+        product['discount'] = discount
+        product['rating_width'] = float(product['rating']) * 20
+        product['logo_url'] = get_logo_url('Amazon.com')
+        
+    sorted_deals = sorted(valid_deal_products, key=lambda x: x['discount'], reverse=True)
+    return sorted_deals
+    
