@@ -1,7 +1,7 @@
 /* BUY NOW BUTTON From Uiverse.io by JaydipPrajapati1910 */ 
 .buy-now-btn {
-    --width: 124px;
-    --height: 35px;
+    --width: 126px;
+    --height: 36px;
     --tooltip-height: 35px;
     --tooltip-width: 90px;
     --gap-between-tooltip-to-button: 18px;
@@ -12,8 +12,7 @@
     background: var(--button-color);
     position: relative;
     text-align: center;
-    border-radius: 0.45em;
-    font-family: "League-Spartan";
+    border-radius: 40px;
     transition: background 0.3s;
   }
   
@@ -278,5 +277,97 @@
 .form__field:required, .form__field:invalid {
   box-shadow: none;
 }
-  
-  
+
+.no-hover-fx {
+  width: 0;
+}
+
+/* ---------------------- */
+/* ADD TO WISHLIST BUTTON */
+/* ---------------------- */
+
+/* From Uiverse.io by Cone911 */ 
+.bookmarkBtn {
+  width: 126px;
+  height: 36px;
+  margin-top: 12px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  /* background-color: rgb(12, 12, 12); */
+  background: linear-gradient(to right, #563d7c, #2a0845);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+}
+
+.IconContainer {
+  width: 40px;
+  height: 33px;
+  background: linear-gradient(to bottom, rgb(255, 136, 255), rgb(172, 70, 255));
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: 0.3s;
+}
+
+.gift-icon {
+  border-radius: 1px;
+}
+
+.wishlist-text {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  transition-duration: 0.3s;
+  /* font-size: 1.04em; */
+  font-family: "League Spartan", sans-serif;
+}
+
+.bookmarkBtn:hover .IconContainer {
+  width: 160px;
+  transition-duration: 0.3s;
+}
+
+.bookmarkBtn:hover .wishlist-text {
+  transform: translate(10px);
+  width: 0;
+  font-size: 0;
+  transition-duration: 0.3s;
+}
+
+.bookmarkBtn:active {
+  transform: scale(0.95);
+  transition-duration: 0.3s;
+}
+
+
+/* -------------------------------------- */
+/* DYNAMIC STARS FOR RATINGS FROM CODEPEN */
+/* -------------------------------------- */
+
+.rating{
+  width: 100px;
+}
+
+.rating__background {
+  fill: #000000;
+  stroke: red;
+  stroke-width: 1;
+  height: 100%;
+  width: 1000%;
+}
+
+.rating__value {
+  fill: #FFB94B;
+  height: 100%;
+}

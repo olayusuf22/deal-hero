@@ -14,17 +14,30 @@
                 <div class="product-img-container">
                     <img src="{{ product.image_url }}" alt="{{ product.name }}">
                 </div>
-                <section class='product-text-container'>    
-                    <p><strong>Price: </strong>${{ latest_price }}</p>
-                    <p><strong>Rating: </strong>{{ product.rating }}</p>
-                    <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
-                    <p><strong>Category: </strong>{{ product.category }}</p>
-                    <p><strong>In Stock: </strong>{{ product.in_stock }}</p>
-                    <p><strong>Description: </strong>{{ product.description }}</p>
-                    <p><strong>ASIN: </strong>{{ product.asin }}</p>
-                    <p><strong>Amazon Choice: </strong>{{ product.amazon_choice }}</p>
-                    <p><strong>Prime Eligible: </strong>{{ product.is_prime_eligible }}</p>
-                    <a href="{{ product.product_url }}" target="_blank">View on Retailer</a>
+                <section class='product-text-container'>
+                    <svg viewBox="0 0 1000 200" class='rating'>
+                        <defs>
+                            <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                            <clipPath id="stars">
+                                <use xlink:href="#star"/>
+                                <use xlink:href="#star" x="20%"/>
+                                <use xlink:href="#star" x="40%"/>
+                                <use xlink:href="#star" x="60%"/>
+                                <use xlink:href="#star" x="80%"/>
+                            </clipPath>
+                        </defs>
+                        <rect class='rating__background' clip-path="url(#stars)"></rect>
+                        <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                    </svg>    
+                    <p><strong>Price: </strong><span style="color: #faf0f0;">${{ latest_price }}</span></p>
+                    <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
+                    <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
+                    <p><strong>Category: </strong><span style="color: #faf0f0;">{{ product.category }}</span></p>
+                    <p><strong>In Stock: </strong><span style="color: #faf0f0;">{% if product.in_stock %} Yes. {% else %} Sold Out. {% endif %}</span></p>
+                    <p><strong>ASIN: </strong><span style="color: #faf0f0;">{{ product.asin }}</span></p>
+                    <p><strong>Amazon Choice: </strong><span style="color: #faf0f0;">{{ product.amazon_choice }}</span></p>
+                    <p><strong>Prime Eligible: </strong><span style="color: #faf0f0;">{{ product.is_prime_eligible }}</span></p>
+                    <a href="{{ product.product_url }}" target="_blank">{% include "partials/buy_now_btn.html" %}</a>
                 </section>
         </div>
     </div>

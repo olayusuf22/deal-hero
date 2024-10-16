@@ -128,7 +128,7 @@ a {
 }
   
  a:hover {
-    transform:scale(1.12);
+    transform:scale(1.0);
     opacity:1;
     filter:blur(0);
     text-decoration:none;

@@ -14,7 +14,7 @@
 .wishlist-grid {
     flex-direction: revert;
     display: flex;
-    max-width: 80vw;
+    max-width: 92vw;
     gap: 32px;
     flex-wrap: wrap;
     justify-content: center;
@@ -28,7 +28,7 @@
     align-items: center;
     background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
     border-radius: 12px;
-    min-width: 350px;
+    min-width: 420px;
     max-width: 18svw;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(3px);
@@ -43,13 +43,21 @@
     justify-content: center;
     align-items: center;
     background: white;
+    object-fit: contain;
     height: 100%;
     width: 100%;
 }
 
-.product-img-container img {
+/* select only the first child of .product-img-container */
+.product-img-container > :first-child {
     max-height: 25cqh;
-    width: 100%;
+    max-width: 100%;
+}
+
+/* Set the position of.sold-out-stamp to be at the right and bottom of it's parent container */
+.sold-out-stamp {
+    width: 120px;
+    position:absolute;
 }
 
 .product-titles {
@@ -86,7 +94,7 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
+    background: linear-gradient(to right, rgba(172, 172, 172, 0.5), rgba(107, 107, 107, 0.85));
     padding: 12px 0 12px 0;
     column-gap: 8px
 }
@@ -107,3 +115,5 @@
     line-height: 1.75;
     padding: 0 4px 0 4px;
 }
+
+
