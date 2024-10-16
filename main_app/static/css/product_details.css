@@ -14,15 +14,14 @@
     display: flex;
     width: 100%;
     margin-top: 24px;
-    text-align: center;
+    justify-content: center;
 }
 
 .product-and-details-container {
     display: flex;
-    width: 85vw;
-    justify-content: center;
-    align-items: center;
-    column-gap: 24px;
+    width: 92vw;
+    justify-content: space-evenly;
+    column-gap: 12px;
     flex-wrap: wrap;
     margin-bottom: 24px;
     align-items: flex-start;
@@ -32,8 +31,7 @@
 .product-card{
     display: flex;
     justify-content: space-between;
-    width: 25%;
-    max-width: 50%;
+    min-width: 420px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.85);
@@ -104,4 +102,44 @@
 
 .bullet-point {
     list-style-type: disc;
+}
+
+/* ------------------- */
+/* PRICE HISTORY TABLE */
+/* ------------------- */
+
+/* Container styles */
+.price-history-container {
+    max-width: 100%;
+    padding: 20px;
+    background-color: #29272dc8;
+    color: #fff;
+    border-radius: 8px;
+}
+
+/* Table styles */
+#price-history-table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures no extra spacing around cells */
+    text-align: left;
+}
+
+#price-history-table th,
+#price-history-table td {
+    border-left: 3px solid white; /* Vertical lines */
+    padding: 10px;
+}
+
+#price-history-table th {
+    border-bottom: 3px solid white; /* Horizontal line under header row */
+}
+
+#price-history-table th:first-child,
+#price-history-table td:first-child {
+    border-left: none; /* Removes the left border from the first column */
+}
+
+/* Optional: Add hover effect to table rows */
+#price-history-table tbody tr:hover {
+    background-color: #4c3b1f; /* Slightly different color on hover for rows */
 }

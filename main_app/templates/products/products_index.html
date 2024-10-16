@@ -17,21 +17,35 @@
                 <img class="product-image" src="{{ amz_best_product.url_image }}" alt="{{ amz_best_product.title }}">
                 <img class="icon-stamp" src="{% static '/icons/Icon-7-Hero-Choice.png' %}" alt="Hero Choice Tag">
             </div>
-            <section class='product-text-container'>    
-                <p><strong>Price: </strong>{{ amz_best_product.currency }} {{ amz_best_product.price }}</p>
-                <p><strong>Rating: </strong>{{ amz_best_product.rating }}</p>
-                <p><strong>Reviews: </strong>{{ amz_best_product.reviews_count }}</p>
+            <section class='product-text-container'>
+                <svg viewBox="0 0 1000 200" class='rating'>
+                    <defs>
+                        <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                        <clipPath id="stars">
+                            <use xlink:href="#star"/>
+                            <use xlink:href="#star" x="20%"/>
+                            <use xlink:href="#star" x="40%"/>
+                            <use xlink:href="#star" x="60%"/>
+                            <use xlink:href="#star" x="80%"/>
+                        </clipPath>
+                    </defs>
+                    <rect class='rating__background' clip-path="url(#stars)"></rect>
+                    <rect width="{{ amz_best_product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                </svg>    
+                <p><strong>Price: </strong><span style="color: #faf0f0;">{{ amz_best_product.currency }} {{ amz_best_product.price }}</span></p>
+                <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ amz_best_product.rating }}</span></p>
+                <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ amz_best_product.reviews_count }}</span></p>
                 {% if amz_best_product.best_seller %}
                     <p><strong>Best Seller</strong></p>
                 {% endif %}
                 {% if amz_best_product.is_amazons_choice %}
                     <p><strong>Amazon's Choice</strong></p>
                 {% endif %}
-                <p><strong> Product ID: </strong> {{ amz_best_product.asin }}</p>
-                <a href="https://www.amazon.com{{ amz_best_product.url }}">View on Amazon</a>
+                <p><strong> Product ID: </strong><span style="color: #faf0f0;">{{ amz_best_product.asin }}</span></p>
+                <a class="no-hover-fx" href="https://www.amazon.com{{ amz_best_product.url }}">{% include "partials/buy_now_btn.html" %}</a>
                 <form action="{% url 'add-to-wishlist' amz_best_product.asin %}" method="post">
                     {% csrf_token %} 
-                    <button class="add-to-wishlist" type="submit" >Add To WishList</button>
+                    {% include "partials/add_to_wishlist_btn.html" %}
                 </form>
             </section>
         </div>
@@ -54,19 +68,33 @@
                             <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
                         </div>
                             <section class="description-text">
-                                <p><strong>Price:$</strong> {{ product.currency }} {{ product.price }}</p>
-                                <p><strong>Rating:</strong> {{ product.rating }}</p>
-                                <p><strong>Reviews:</strong> {{ product.reviews_count }}</p>
+                                <svg viewBox="0 0 1000 200" class='rating'>
+                                    <defs>
+                                        <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                                        <clipPath id="stars">
+                                            <use xlink:href="#star"/>
+                                            <use xlink:href="#star" x="20%"/>
+                                            <use xlink:href="#star" x="40%"/>
+                                            <use xlink:href="#star" x="60%"/>
+                                            <use xlink:href="#star" x="80%"/>
+                                        </clipPath>
+                                    </defs>
+                                    <rect class='rating__background' clip-path="url(#stars)"></rect>
+                                    <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                                </svg>
+                                <p><strong>Price: </strong><span style="color: #faf0f0;">${{ product.price }}</span></p>
+                                <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
+                                <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
                                 {% if product.best_seller %}
                                     <p><strong>Best Seller</strong></p>
                                 {% endif %}
                                 {% if product.is_amazons_choice %}
                                     <p><strong>Amazon's Choice</strong></p>
                                 {% endif %}
-                                <p><strong> Product ID: </strong> {{ product.asin }}</p>
+                                <p><strong> Product ID: </strong><span style="color: #faf0f0;">{{ product.asin }}</span></p>
                                 <form action="{% url 'add-to-wishlist' product.asin %}" method="post">
                                     {% csrf_token %} 
-                                    <button class="add-to-wishlist" type="submit" >Add To WishList</button>
+                                    {% include "partials/add_to_wishlist_btn.html" %}
                                 </form>
                             </section>
                     </section>
