@@ -1,9 +1,18 @@
-<tbody>
-    {% for entry in price_history %}
+<table id="price-history-table">
+    <thead>
         <tr>
-            <td>{{ entry.timestamp }}</td>
-            <td>${{ entry.price }}</td>
-            <td>{{ entry.retailer.name }}</td>
+            <th>Date</th>
+            <th>Lowest Price</th>
+            <th>Sold By:</th>
         </tr>
-    {% endfor %}
-</tbody>
+    </thead>
+    <tbody>
+        {% for entry in price_history %}
+            <tr>
+                <td>{{ entry.timestamp }}</td>
+                <td>${{ entry.price }}</td>
+                <td>{{ entry.retailer.name }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
