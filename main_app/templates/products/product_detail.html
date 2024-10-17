@@ -124,7 +124,7 @@
             </div>
         </div>
     </section>
-    <section class="more-images-container">
+    <section class="more-images-carousel snaps-inline">
         {% for image in product.more_images %}
         <a href="{{ image }}" target="_blank"><img src="{{ image }}" alt="Additional image for {{ product.name }}"></a>
         {% endfor %}
@@ -141,9 +141,12 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="about-this-item-card"> 
-            <div class="icon-and-legend"> 
+        <div class="about-this-item-card">
+            <div class="icon-and-legend">
                 <i class="fa-solid fa-user-check fa-2xl" style="color: #FFD43B;"></i>
+                <h3>Top Review</h3> 
+            </div>
+            <div class="center-image">
                 <svg viewBox="0 0 1000 200" class='rating'>
                     <defs>
                         <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
@@ -159,7 +162,6 @@
                     <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
                 </svg>
             </div>
-            <h3>Top Review</h3>
             <blockquote><i class="fa-solid fa-quote-left fa-xl" style="color: #FFD43B;"></i> &nbsp; {{ product.top_review|safe }}</blockquote>
         </div>
         <div class="about-this-item-card">
