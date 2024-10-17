@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/product_confirm_delete.css' %}" />
+{% endblock %}
 {% block content %}
   
-<div class="page-header">
-<h1>Delete Item?</h1>
-<img src="{{ product.image_url }}" alt="Image of {{ product.name }}" />
+<div class="results-wrapper">
+    <div class="product-card">
+        <div class="product-titles">
+            <h1>Delete Item?</h1>
+        </div>
+        <div class="product-img-container">
+            <img class ="product-image" src="{{ product.image_url }}" alt="Image of {{ product.name }}" />
+            <h3 style="color: black; font-weight: 300"><span style="color: red">
+                Are you sure you want to delete </span><em>{{ product.name }} </em>
+                <span style="color: red">from your wishlist?</span></h3>
+        </div>
+        <section class="product-description">
+            <form action="" method="post" class="form">
+            {% csrf_token %}
+            <a href="{% url 'wishlist' %}" class="btn secondary"> Cancel </a>
+            <button type="submit" class="btn danger">Yes - Delete!</button>
+            </form>
+        </section>
+    </div>
 </div>
-<h2>Are you sure you want to delete {{ product.name }}?</h2>
-  
-<form action="" method="post" class="form">
-{% csrf_token %}
-<a href="{% url 'wishlist' %}" class="btn secondary"> Cancel </a>
-<button type="submit" class="btn danger">Yes - Delete!</button>
-</form>
   
 {% endblock %}
