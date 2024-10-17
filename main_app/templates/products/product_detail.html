@@ -131,7 +131,7 @@
     </section>
     <section class="more-details-container">
         <div class="about-this-item-card">
-            <p><strong>Ratings Distribution:</strong></p>
+            <h3><strong>Ratings Distribution:</strong></h3>
             <ul>
                 {% for distribution in product.rating_stars_distribution %}
                 <li>
@@ -141,23 +141,26 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="about-this-item-card">
-            <i class="fa-solid fa-user-check fa-2xl" style="color: #FFD43B;"></i>
-            <svg viewBox="0 0 1000 200" class='rating'>
-                <defs>
-                    <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
-                    <clipPath id="stars">
-                        <use xlink:href="#star"/>
-                        <use xlink:href="#star" x="20%"/>
-                        <use xlink:href="#star" x="40%"/>
-                        <use xlink:href="#star" x="60%"/>
-                        <use xlink:href="#star" x="80%"/>
-                    </clipPath>
-                </defs>
-                <rect class='rating__background' clip-path="url(#stars)"></rect>
-                <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
-            </svg>
-            <p><strong>Top Review: </strong>{{ product.top_review|safe }}</p>
+        <div class="about-this-item-card"> 
+            <div class="icon-and-legend"> 
+                <i class="fa-solid fa-user-check fa-2xl" style="color: #FFD43B;"></i>
+                <svg viewBox="0 0 1000 200" class='rating'>
+                    <defs>
+                        <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                        <clipPath id="stars">
+                            <use xlink:href="#star"/>
+                            <use xlink:href="#star" x="20%"/>
+                            <use xlink:href="#star" x="40%"/>
+                            <use xlink:href="#star" x="60%"/>
+                            <use xlink:href="#star" x="80%"/>
+                        </clipPath>
+                    </defs>
+                    <rect class='rating__background' clip-path="url(#stars)"></rect>
+                    <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                </svg>
+            </div>
+            <h3>Top Review</h3>
+            <blockquote><i class="fa-solid fa-quote-left fa-xl" style="color: #FFD43B;"></i> &nbsp; {{ product.top_review|safe }}</blockquote>
         </div>
         <div class="about-this-item-card">
             <div class="icon-and-legend">
