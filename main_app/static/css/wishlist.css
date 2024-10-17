@@ -48,13 +48,11 @@
     width: 100%;
 }
 
-/* select only the first child of .product-img-container */
 .product-img-container > :first-child {
     max-height: 25cqh;
     max-width: 100%;
 }
 
-/* Set the position of.sold-out-stamp to be at the right and bottom of it's parent container */
 .sold-out-stamp {
     width: 120px;
     position:absolute;

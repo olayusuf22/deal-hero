@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView
-from .forms import SignUpForm
+from .forms import SignUpForm, CustomLoginForm
 from .models import Product, Retailer, Wishlist, PriceHistory
 import urllib.parse
 import requests
@@ -22,12 +22,12 @@ class Home(LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['deals_of_the_day'] = deals_of_the_day(self.request)
-        print('This is the deals of the day:', context['deals_of_the_day'])
+        context['deals_of_the_day'] = deals_of_the_day_init(self.request)
         return context
 
-class Login(LoginView):
-    template_name = 'login.html'
+class CustomLoginView(LoginView):
+    authentication_form = CustomLoginForm
+    template_name = 'registration/login.html'
     
 def signup(request):
     if request.method == 'POST':
@@ -50,8 +50,8 @@ class WishlistView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         wishlist_items = Wishlist.objects.filter(user=self.request.user)
         for item in wishlist_items:
-            latest_price = PriceHistory.objects.filter(product=item.product_id).order_by('-timestamp').first()
-            item.product_id.current_price = latest_price.price if latest_price else None
+            latest_price = PriceHistory.objects.filter(product=item.product).order_by('-timestamp').first()
+            item.product.current_price = latest_price.price if latest_price else None
         return wishlist_items
 
 def fetch_product_data(payload):
@@ -72,6 +72,13 @@ def get_logo_url(merchant_name):
     cleaned_name = cleaned_name.replace(" ", "")
     
     return f"https://img.logo.dev/{cleaned_name}.com?token=pk_MHqHMYHhSPqsrHGnE0dW1Q"
+
+def clean_merchant_name(merchant_name):
+    cleaned_name = merchant_name.replace("'", "")
+    cleaned_name = cleaned_name.replace(" ", "")
+    cleaned_name = re.sub(r'\.com|\.net|\.org', '', cleaned_name)
+    cleaned_name = cleaned_name.strip()
+    return cleaned_name
 
 def extract_url(full_url):
     parsed_url = urllib.parse.urlparse(full_url)
@@ -95,9 +102,6 @@ def product_search(request):
             'start_page': 1,
             'pages': 1,
             'parse': True,
-            'context': [
-                {'key': 'category_id', 'value': 16391693031}
-            ],
         }
 
         google_payload = {
@@ -125,6 +129,10 @@ def product_search(request):
         for product in ggl_results:
             merchant_name = product['merchant']['name']
             product['logo_url'] = get_logo_url(merchant_name)
+
+        # Add the cleaned merchant name to each Google Shopping product. (Remove the domain from the merchant name)
+        for product in ggl_results:
+             product['cleaned_merchant_name'] = clean_merchant_name(product['merchant']['name'])
 
         valid_amz_products = [
             product for product in amz_results
@@ -167,7 +175,6 @@ def product_search(request):
         ggl_sorted_products = sorted(valid_ggl_products, key=sorting_key, reverse=True)
         ggl_best_product = ggl_sorted_products[0] if ggl_sorted_products else None
         
-        # rating_width is the value used to dynamically calculate the width of the rating stars ⭐⭐⭐.
         amz_best_product['rating_width'] = float(amz_best_product['rating']) * 20
         ggl_best_product['rating_width'] = float(ggl_best_product['rating']) * 20 if ggl_best_product else 0
 
@@ -178,6 +185,11 @@ def product_search(request):
         for product in ggl_sorted_products:
             if product.get('rating'):
                 product['rating_width'] = float(product['rating']) * 20
+
+        # Create a loop that prints out the first 5 ggl_sorted_products
+        print("\nTop 5 Google Shopping Products:")
+        for i, product in enumerate(ggl_sorted_products[:5], start=1):
+             print(f"{i}. Title: {product}")
 
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
@@ -266,7 +278,7 @@ def add_to_wishlist(request, product_asin):
         product = fetch_product_details(product_asin, request.user)
         
         Wishlist.objects.get_or_create(
-            product_id=product,
+            product=product,
             user=request.user
         )
 
@@ -275,9 +287,16 @@ def add_to_wishlist(request, product_asin):
 class DeleteProduct(LoginRequiredMixin, DeleteView):
     model = Wishlist
     template_name = 'products/product_confirm_delete.html'
-    success_url = '/wishlist/'
+    # success_url = '/wishlist/'
+    success_url = reverse_lazy('wishlist')
 
-class ProductDetail(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Assuming the Wishlist model has a ForeignKey to Product
+        context['product'] = self.object.product
+        return context
+
+class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'products/product_detail.html'
     context_object_name = 'product'
@@ -337,10 +356,15 @@ def update_price(request, pk):
         'price_history': price_history,
         'retailer': retailer,
         })
-    
-def deals_of_the_day(request):
+
+
+def deals_of_the_day_init(request):
+
+    category = 'Electronics' 
+
     if request.method == 'POST':
-        category_id = request.POST.get('query')
+        category = request.POST.get('category', '')
+    
     payload = {
         'source': 'amazon_search',
         'domain': 'com',
@@ -348,8 +372,9 @@ def deals_of_the_day(request):
         'parse': True,
         'start_page': 1,
         'pages': 1,
-        'query': 'deals of the day electronics',
+        'query': f'deals of the day {category}',
     }
+    
     data = fetch_product_data(payload)
     
     deals_of_the_day = data['results'][0]['content']['results']['organic']
@@ -362,8 +387,8 @@ def deals_of_the_day(request):
             product.get('price'),
             product.get('title'),
             product.get('url_image'),
-            # get only products that have a strike through price different then null
             product.get('price_strikethrough'),
+            product.get('reviews_count') > 10,
             ])
         ]
     
@@ -376,10 +401,62 @@ def deals_of_the_day(request):
             discount = (1 - price / strike_through_price) * 100
         else:
             discount = 0
-        product['discount'] = discount
+
+        product['discount'] = int(round(discount))
         product['rating_width'] = float(product['rating']) * 20
         product['logo_url'] = get_logo_url('Amazon.com')
         
     sorted_deals = sorted(valid_deal_products, key=lambda x: x['discount'], reverse=True)
     return sorted_deals
+
+def deals_of_the_day(request):
+
+    category = 'Home & Kitchen' 
+
+    if request.method == 'POST':
+        category = request.POST.get('category', '')
     
+    payload = {
+        'source': 'amazon_search',
+        'domain': 'com',
+        'domain_name': 'usa',
+        'parse': True,
+        'start_page': 1,
+        'pages': 1,
+        'query': f'deals of the day {category}',
+    }
+    
+    data = fetch_product_data(payload)
+    
+    deals_of_the_day = data['results'][0]['content']['results']['organic']
+    
+    valid_deal_products = [
+        product for product in deals_of_the_day
+        if all([
+            product.get('url'),
+            product.get('asin'),
+            product.get('price'),
+            product.get('title'),
+            product.get('url_image'),
+            product.get('price_strikethrough'),
+            product.get('reviews_count') > 10,
+            ])
+        ]
+    
+    for product in valid_deal_products:
+        price = product.get('price')
+        strike_through_price = product.get('price_strikethrough')
+        product['price'] = price
+        product['strike_through_price'] = strike_through_price
+        if strike_through_price and strike_through_price > 0:
+            discount = (1 - price / strike_through_price) * 100
+        else:
+            discount = 0
+
+        product['discount'] = int(round(discount))
+        product['rating_width'] = float(product['rating']) * 20
+        product['logo_url'] = get_logo_url('Amazon.com')
+        
+    sorted_deals = sorted(valid_deal_products, key=lambda x: x['discount'], reverse=True)
+    return render(request, 'home.html', {'deals_of_the_day': sorted_deals})
+

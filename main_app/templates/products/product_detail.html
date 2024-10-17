@@ -3,115 +3,177 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/product_details.css' %}" />
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var priceHistoryData = {
+            x: [{% for entry in price_history %}'{{ entry.timestamp|date:"Y-m-d H:i:s" }}'{% if not forloop.last %},{% endif %}{% endfor %}],
+            y: [{% for entry in price_history %}{{ entry.price }}{% if not forloop.last %},{% endif %}{% endfor %}],
+            type: 'scatter',
+            line: {
+                color: '#f3f71f' // Change the line color
+            }
+        };
+
+        var layout = {
+            title: {
+                text: 'We heard you like graphs...',
+                font: {
+                    size: 28,
+                    color: '#ffffff',
+                }
+            },
+            font: {
+                family: 'League Spartan, sans-serif',
+                size: 12,
+                color: '#ffffff'
+            },
+            plot_bgcolor: '#29272dc8', // Change the plot background color
+            paper_bgcolor: '#29272dc8', // Change the paper background color
+            xaxis: {
+                title: 'Date',
+                titlefont: {
+                    size: 18,
+                    color: '#ffffff'
+                },
+                tickformat: '%b. %d, %Y',
+            },
+            yaxis: {
+                title: 'Price (USD)',
+                titlefont: {
+                    size: 18,
+                    color: '#ffffff'
+                }
+            },
+            showlegend: false,
+        };
+
+        var config = {
+            displayModeBar: false
+        };
+
+        Plotly.newPlot('price-history-graph', [priceHistoryData], layout, config);
+    });
+</script>  
 {% endblock %}
 {% block content %}
 
 <div class='product-detail-wrapper'>
-    <div class="product-title">
-        <h1>{{ product.name }}</h1>
-    </div>
-    <div class="product-and-details-container">
-        <div id="price-history-graph"></div>  
-        <div class="product-card">
-                <div class="product-img-container">
-                    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+    <section class="main-info">
+        <div class="product-title">
+            <h2>{{ product.name }}</h2>
+        </div>
+        <div class="product-and-details-container">
+            <div id="price-history-graph">
+            </div>  
+            <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                    </div>
+                    <div class='product-text-container'>
+                        <h2 style="text-align: left; padding: 8px 0 8px 0;">${{ latest_price }}</span></h2>
+                        <svg viewBox="0 0 1000 200" class='rating'>
+                            <defs>
+                                <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                                <clipPath id="stars">
+                                    <use xlink:href="#star"/>
+                                    <use xlink:href="#star" x="20%"/>
+                                    <use xlink:href="#star" x="40%"/>
+                                    <use xlink:href="#star" x="60%"/>
+                                    <use xlink:href="#star" x="80%"/>
+                                </clipPath>
+                            </defs>
+                            <rect class='rating__background' clip-path="url(#stars)"></rect>
+                            <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                        </svg>    
+                        <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
+                        <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
+                        <p><strong>Category: </strong><span style="color: #faf0f0;">{{ product.category }}</span></p>
+                        <p><strong>In Stock: </strong><span style="color: #faf0f0;">{% if product.in_stock %} Yes. {% else %} Sold Out. {% endif %}</span></p>
+                        <p><strong>ASIN: </strong><span style="color: #faf0f0;">{{ product.asin }}</span></p>
+                        <p><strong>Amazon Choice: </strong><span style="color: #faf0f0;">{{ product.amazon_choice }}</span></p>
+                        <p><strong>Prime Eligible: </strong><span style="color: #faf0f0;">{{ product.is_prime_eligible }}</span></p>
+                        <a href="{{ product.product_url }}" target="_blank">{% include "partials/buy_now_btn.html" %}</a>
+                    </div>
+            </div>
+            <div class="price-history-container">
+                <div class="price-history">
+                    <h2>Price History</h2>
+                    <table id="price-history-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Lowest Price</th>
+                                    <th>Sold By:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for entry in price_history %}
+                                    <tr>
+                                        <td>{{ entry.timestamp }}</td>
+                                        <td>${{ entry.price }}</td>
+                                        <td>{{ entry.retailer.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    <form hx-post="{% url 'update-price' product.id %}" hx-target="#price-history-table" hx-swap="outerHTML">
+                        {% csrf_token %}
+                        <button style="margin-top: 12px;" class="btn" type="submit">Check the Latest Price</button>
+                    </form>
                 </div>
-                <section class='product-text-container'>
-                    <svg viewBox="0 0 1000 200" class='rating'>
-                        <defs>
-                            <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
-                            <clipPath id="stars">
-                                <use xlink:href="#star"/>
-                                <use xlink:href="#star" x="20%"/>
-                                <use xlink:href="#star" x="40%"/>
-                                <use xlink:href="#star" x="60%"/>
-                                <use xlink:href="#star" x="80%"/>
-                            </clipPath>
-                        </defs>
-                        <rect class='rating__background' clip-path="url(#stars)"></rect>
-                        <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
-                    </svg>    
-                    <p><strong>Price: </strong><span style="color: #faf0f0;">${{ latest_price }}</span></p>
-                    <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
-                    <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
-                    <p><strong>Category: </strong><span style="color: #faf0f0;">{{ product.category }}</span></p>
-                    <p><strong>In Stock: </strong><span style="color: #faf0f0;">{% if product.in_stock %} Yes. {% else %} Sold Out. {% endif %}</span></p>
-                    <p><strong>ASIN: </strong><span style="color: #faf0f0;">{{ product.asin }}</span></p>
-                    <p><strong>Amazon Choice: </strong><span style="color: #faf0f0;">{{ product.amazon_choice }}</span></p>
-                    <p><strong>Prime Eligible: </strong><span style="color: #faf0f0;">{{ product.is_prime_eligible }}</span></p>
-                    <a href="{{ product.product_url }}" target="_blank">{% include "partials/buy_now_btn.html" %}</a>
-                </section>
+            </div>
         </div>
-        <section class="price-history-container">
-            <div class="price-history">
-                <h2>Price History</h2>
-                <table id="price-history-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Price</th>
-                            <th>Sold By:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for entry in price_history %}
-                            <tr>
-                                <td>{{ entry.timestamp }}</td>
-                                <td>${{ entry.price }}</td>
-                                <td>{{ entry.retailer.name }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <form hx-post="{% url 'update-price' product.id %}" hx-target="#price-history-table tbody" hx-swap="innerHTML">
-                {% csrf_token %}
-                <button style="margin-top: 12px;" class="btn" type="submit">� Check the Latest Price</button>
-            </form>
-            </div>
-        </section>
-    </div>
-
-    </div>
-        <div class="more-images-container">
-            {% for image in product.more_images %}
-               <a href="{{ image }}" target="_blank"><img src="{{ image }}" alt="Additional image for {{ product.name }}"></a>
-            {% endfor %}
+    </section>
+    <section class="more-images-carousel snaps-inline">
+        {% for image in product.more_images %}
+        <a href="{{ image }}" target="_blank"><img src="{{ image }}" alt="Additional image for {{ product.name }}"></a>
+        {% endfor %}
+    </section>
+    <section class="more-details-container">
+        <div class="about-this-item-card">
+            <h3><strong>Ratings Distribution:</strong></h3>
+            <ul>
+                {% for distribution in product.rating_stars_distribution %}
+                <li>
+                {{ distribution.rating }} stars: 
+                    <meter value="{{ distribution.percentage }}" min="0" max="100">{{ distribution.percentage }}%</meter>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
-        <section class="more-details-container">
-            <div class="about-this-item-card">
-                <p><strong>About This Item:</strong></p>
-                <ul>
-                    {% for point in product.bullet_points %}
-                        <li class="bullet-point">{{ point }}</li>
-                        {% endfor %}
-                </ul>
+        <div class="about-this-item-card">
+            <div class="icon-and-legend">
+                <i class="fa-solid fa-user-check fa-2xl" style="color: #FFD43B;"></i>
+                <h3>Top Review</h3> 
             </div>
-            <div class="about-this-item-card">
-                <p><strong>Top Review: </strong>{{ product.top_review|safe }}</p>
+            <div class="center-image">
+                <svg viewBox="0 0 1000 200" class='rating'>
+                    <defs>
+                        <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                        <clipPath id="stars">
+                            <use xlink:href="#star"/>
+                            <use xlink:href="#star" x="20%"/>
+                            <use xlink:href="#star" x="40%"/>
+                            <use xlink:href="#star" x="60%"/>
+                            <use xlink:href="#star" x="80%"/>
+                        </clipPath>
+                    </defs>
+                    <rect class='rating__background' clip-path="url(#stars)"></rect>
+                    <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                </svg>
             </div>
-            
-            <div class="text-details-card">
-                <p><strong>Ratings Distribution:</strong></p>
-                <ul>
-                    {% for distribution in product.rating_stars_distribution %}
-                    <li>
-                    {{ distribution.rating }} stars: 
-                        <meter value="{{ distribution.percentage }}" min="0" max="100">{{ distribution.percentage }}%</meter>
-                    </li>
+            <blockquote><i class="fa-solid fa-quote-left fa-xl" style="color: #FFD43B;"></i> &nbsp; {{ product.top_review|safe }}</blockquote>
+        </div>
+        <div class="about-this-item-card">
+            <div class="icon-and-legend">
+                <i class="fa-solid fa-clipboard-question fa-2xl" style="color: #FFD43B;"></i><h3><strong>About This Item:</strong></h3>
+            </div>
+            <ul>
+                {% for point in product.bullet_points %}
+                    <li class="bullet-point">{{ point }}</li>
                     {% endfor %}
-                </ul>
-            </div>
-        </section>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var priceHistoryData = {
-                    x: [{% for entry in price_history %}'{{ entry.timestamp|date:"Y-m-d H:i:s" }}'{% if not forloop.last %},{% endif %}{% endfor %}],
-                    y: [{% for entry in price_history %}{{ entry.price }}{% if not forloop.last %},{% endif %}{% endfor %}],
-                    type: 'scatter'
-                };
-                Plotly.newPlot('price-history-graph', [priceHistoryData]);
-            });
-        </script>            
+            </ul>
+        </div>
+    </section>        
 </div>
-{% endblock %}
+    {% endblock %}
