@@ -70,6 +70,7 @@
                         <img src="{{ product.image_url }}" alt="{{ product.name }}">
                     </div>
                     <div class='product-text-container'>
+                        <h2 style="text-align: left; padding: 8px 0 8px 0;">${{ latest_price }}</span></h2>
                         <svg viewBox="0 0 1000 200" class='rating'>
                             <defs>
                                 <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
@@ -84,7 +85,6 @@
                             <rect class='rating__background' clip-path="url(#stars)"></rect>
                             <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
                         </svg>    
-                        <p><strong>Price: </strong><span style="color: #faf0f0;">${{ latest_price }}</span></p>
                         <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
                         <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
                         <p><strong>Category: </strong><span style="color: #faf0f0;">{{ product.category }}</span></p>
