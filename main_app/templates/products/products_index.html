@@ -114,7 +114,7 @@
                     <div class="product-description">
                         <div class="logo-container">
                                 <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
-                                <a href="https://www.google.com{{ product.url }}">Buy from {{ product.merchant.name }}</a>
+                                <a href="https://www.{{product.cleaned_merchant_name}}.com" target="_blank">Buy from {{ product.merchant.name }}</a>
                         </div>
                         <section class="description-text">
                             <p><strong>Price: </strong>{{ product.currency }} {{ product.price }}</p>
@@ -122,7 +122,6 @@
                             <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
                             <p><strong>Merchant: </strong>{{ product.merchant.name }}</p>
                             <p><strong> Product ID: </strong>{{ product_id }}</p>
-                            {% comment %} <a href="{% url 'fetch-product-details' product.product_id %}" class="add-to-wishlist">Add To WishList</a> {% endcomment %}
                         </section>
                     </div>
                 </div>

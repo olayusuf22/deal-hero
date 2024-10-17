@@ -74,6 +74,20 @@ def get_logo_url(merchant_name):
     
     return f"https://img.logo.dev/{cleaned_name}.com?token=pk_MHqHMYHhSPqsrHGnE0dW1Q"
 
+# def remove_domain(merchant_name):
+#     if '.' in merchant_name:
+#         return re.split(r'\.com|\.net|\.org', merchant_name)[0]
+#     else:
+#         return merchant_name
+
+# create a function named clean_merchant_name that removes the domain from the merchant name (removes .com). Also, remove whitespaces from the merchant name.
+def clean_merchant_name(merchant_name):
+    cleaned_name = merchant_name.replace("'", "")
+    cleaned_name = cleaned_name.replace(" ", "")
+    cleaned_name = re.sub(r'\.com|\.net|\.org', '', cleaned_name)
+    cleaned_name = cleaned_name.strip()
+    return cleaned_name
+
 def extract_url(full_url):
     parsed_url = urllib.parse.urlparse(full_url)
     query_params = urllib.parse.parse_qs(parsed_url.query)
@@ -96,9 +110,6 @@ def product_search(request):
             'start_page': 1,
             'pages': 1,
             'parse': True,
-            'context': [
-                {'key': 'category_id', 'value': 16391693031}
-            ],
         }
 
         google_payload = {
@@ -126,6 +137,10 @@ def product_search(request):
         for product in ggl_results:
             merchant_name = product['merchant']['name']
             product['logo_url'] = get_logo_url(merchant_name)
+
+        # Add the cleaned merchant name to each Google Shopping product. (Remove the domain from the merchant name)
+        for product in ggl_results:
+             product['cleaned_merchant_name'] = clean_merchant_name(product['merchant']['name'])
 
         valid_amz_products = [
             product for product in amz_results
@@ -168,7 +183,6 @@ def product_search(request):
         ggl_sorted_products = sorted(valid_ggl_products, key=sorting_key, reverse=True)
         ggl_best_product = ggl_sorted_products[0] if ggl_sorted_products else None
         
-        # rating_width is the value used to dynamically calculate the width of the rating stars ⭐⭐⭐.
         amz_best_product['rating_width'] = float(amz_best_product['rating']) * 20
         ggl_best_product['rating_width'] = float(ggl_best_product['rating']) * 20 if ggl_best_product else 0
 
@@ -179,6 +193,11 @@ def product_search(request):
         for product in ggl_sorted_products:
             if product.get('rating'):
                 product['rating_width'] = float(product['rating']) * 20
+
+        # Create a loop that prints out the first 5 ggl_sorted_products
+        print("\nTop 5 Google Shopping Products:")
+        for i, product in enumerate(ggl_sorted_products[:5], start=1):
+             print(f"{i}. Title: {product}")
 
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
