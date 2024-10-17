@@ -1,72 +1,87 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-<div class="page-header">
-  <h1>Sign Up</h1>
-</div>
-
-{% if messages %}
-  {% for message in messages %}
-    <p class="{{ message.tags }}">{{ message }}</p>
-  {% endfor %}
-{% endif %}
-
-<form action="" method="post" class="form-container" autocomplete="off">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <th>{{ form.username.label_tag }}</th>
-      <td>
-        {{ form.username }}
-        {% if form.username.errors %}
-          <ul class="errorlist">
-            {% for error in form.username.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <th>{{ form.email.label_tag }}</th>
-      <td>
-        {{ form.email }}
-        {% if form.email.errors %}
-          <ul class="errorlist">
-            {% for error in form.email.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <th>{{ form.password1.label_tag }}</th>
-      <td>
-        {{ form.password1 }}
-        {% if form.password1.errors %}
-          <ul class="errorlist">
-            {% for error in form.password1.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <th>{{ form.password2.label_tag }}</th>
-      <td>
-        {{ form.password2 }}
-        {% if form.password2.errors %}
-          <ul class="errorlist">
-            {% for error in form.password2.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </td>
-    </tr>
-  </table>
-  <button type="submit" class="btn submit">Submit!</button>
-</form>
+{% block head%}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
 {% endblock %}
+{% block content %}
+
+
+<div class="login-wrapper">
+  <section class="signup-container">
+    <h1 class="card-top-title">Become a Hero</h1>
+    <div class='icon-and-legend'>
+      <img class="medium-icon" src="{% static 'icons/Icon-2-Mask.png' %}" alt="Hero Icon" />
+      <h2><span style="color: #faf0f0;">Sign Up:</span></h2>
+    </div>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form class="login-form" action="" method="post" class="form-container" autocomplete="off">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <th><label for="{{ form.username.id_for_label }}">Superhero Name:</label></th>
+          <td>
+            {{ form.username }}
+            {% if form.username.errors %}
+              <ul class="errorlist">
+                {% for error in form.username.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th>{{ form.email.label_tag }}</th>
+          <td>
+            {{ form.email }}
+            {% if form.email.errors %}
+              <ul class="errorlist">
+                {% for error in form.email.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th><label for="{{ form.password1.id_for_label }}">Super Secure Password:</label></th>
+          <td>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+              <ul class="errorlist">
+                {% for error in form.password1.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th><label for="{{ form.password2.id_for_label }}">Confirm Password:</label></th>
+          <td>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+              <ul class="errorlist">
+                {% for error in form.password2.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+      <button type="submit" class="btn">Enroll</button>
+    </form>
+    <div class="signup-link-container">
+      <p> Already a Hero?</p>
+      <a href="{% url 'login' %}"> Log In!</a>
+    </div>
+    {% endblock %}
+  </section>
+</div>

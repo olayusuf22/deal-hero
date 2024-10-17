@@ -43,8 +43,8 @@
             </div>
             <section class="product-description">
               <div class="logo-container">
-                  <img  class="merchant-logo" src="{{ deal.logo_url }}" alt="Amazon logo" width="80">
-                  <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
+                <a href="https://www.amazon.com{{ deal.url }}" target="_blank"><img  class="merchant-logo" src="{{ deal.logo_url }}" alt="Amazon logo" width="80"></a>
+                <a href="https://www.amazon.com{{ deal.url }}" target="_blank">View on Amazon</a>
               </div>
                   <section class="description-text">
                       <p><span style="color: #faf0f0; font-size: small;"><svg viewBox="0 0 1000 200" class='rating'>
@@ -70,7 +70,6 @@
                       {% if deal.is_amazons_choice %}
                           <p><strong>Amazon's Choice</strong></p>
                       {% endif %}
-                      <p><strong> Product ID: </strong><span style="color: #faf0f0;">{{ deal.asin }}</span></p>
                       <form action="{% url 'add-to-wishlist' deal.asin %}" method="post">
                           {% csrf_token %} 
                           {% include "partials/add_to_wishlist_btn.html" %}

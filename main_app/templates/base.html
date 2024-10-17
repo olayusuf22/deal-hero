@@ -25,8 +25,8 @@
             <img src="{% static '/images/DH-Small-Logo-1.png' %}" alt="Deal Hero Logo" />
           </a>
       </div>
+      {% include "partials/search_box.html" %}
       <nav>
-        {% include "partials/search_box.html" %}
         <ul>
           {% if user.is_authenticated %}
           <li>

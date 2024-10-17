@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView
-from .forms import SignUpForm
+from .forms import SignUpForm, CustomLoginForm
 from .models import Product, Retailer, Wishlist, PriceHistory
 import urllib.parse
 import requests
@@ -26,8 +26,9 @@ class Home(LoginView):
         print('This is the deals of the day:', context['deals_of_the_day'])
         return context
 
-class Login(LoginView):
-    template_name = 'login.html'
+class CustomLoginView(LoginView):
+    authentication_form = CustomLoginForm
+    template_name = 'registration/login.html'
     
 def signup(request):
     if request.method == 'POST':
@@ -348,7 +349,7 @@ def deals_of_the_day(request):
         'parse': True,
         'start_page': 1,
         'pages': 1,
-        'query': 'deals of the day Garden',
+        'query': 'deals of the day Outdoors',
     }
     data = fetch_product_data(payload)
     
