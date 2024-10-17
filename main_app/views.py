@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -276,9 +276,16 @@ def add_to_wishlist(request, product_asin):
 class DeleteProduct(LoginRequiredMixin, DeleteView):
     model = Wishlist
     template_name = 'products/product_confirm_delete.html'
-    success_url = '/wishlist/'
+    # success_url = '/wishlist/'
+    success_url = reverse_lazy('wishlist')
 
-class ProductDetail(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Assuming the Wishlist model has a ForeignKey to Product
+        context['product'] = self.object.product
+        return context
+
+class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'products/product_detail.html'
     context_object_name = 'product'

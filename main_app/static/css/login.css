@@ -64,43 +64,11 @@
         font-weight: 350;
     }
 
-    /* From Uiverse.io by btongheng */ 
-    .submit-button {
-        --😀: #644dff;
-        --😀😀: #ffe270;
-        --😀😀😀: #000000b1;
-        font-family: "League Spartan", sans-serif;
-        cursor: pointer;
-        width: 184px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* gap: 1rem; */
-        font-size: 2vh;
-        font-weight: 600;
-        color: #fff;
-        background: linear-gradient(to right, #563d7c, #2a0845);
-        border: 2px solid var(--😀😀);
-        border-radius: .75rem;
-        box-shadow: 0 8px 3 var(--😀😀);
-        transform: skew(-8deg);
-        transition: all .1s ease;
-        filter: drop-shadow(0 8px 12px var(--😀😀😀));
-    }
-    
-    .button:active {
-        letter-spacing: 0px;
-        transform: skew(-10deg) translateY(8px);
-        box-shadow: 0 0 0 var(--😀😀😀);
-    }
-
     form input {
         background-color: #181818;
         max-width: 190px;
         height: 12px;
         padding: 8px;
-        /* text-align: center; */
         border: 2px solid white;
         border-radius: 8px;
         box-shadow: 1px 1px 4px rgb(249, 255, 85);
@@ -110,10 +78,20 @@
         color: rgb(0, 255, 255);
         background-color: #3c3c3c;
         outline-color: rgb(0, 255, 255);
-        box-shadow: -3px -3px 15px rgb(0, 255, 255);
-        transition: .75s;
+        box-shadow: -2px -2px 25px rgb(0, 255, 255);
+        transition: 2s;
         transition-property: box-shadow;
       }
+
+      input:valid {
+        color: #ffffff;
+      }
+
+      input:invalid {
+        border-color: red;
+      }
+
+      
 }
 
 .signup-link-container {
