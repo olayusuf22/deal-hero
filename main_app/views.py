@@ -51,8 +51,8 @@ class WishlistView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         wishlist_items = Wishlist.objects.filter(user=self.request.user)
         for item in wishlist_items:
-            latest_price = PriceHistory.objects.filter(product=item.product_id).order_by('-timestamp').first()
-            item.product_id.current_price = latest_price.price if latest_price else None
+            latest_price = PriceHistory.objects.filter(product=item.product).order_by('-timestamp').first()
+            item.product.current_price = latest_price.price if latest_price else None
         return wishlist_items
 
 def fetch_product_data(payload):
@@ -267,7 +267,7 @@ def add_to_wishlist(request, product_asin):
         product = fetch_product_details(product_asin, request.user)
         
         Wishlist.objects.get_or_create(
-            product_id=product,
+            product=product,
             user=request.user
         )
 
