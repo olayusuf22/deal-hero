@@ -29,6 +29,18 @@
     
   {% include "partials/search_box.html" %}
 
+  <form method="POST" action="{% url 'deals' %}">
+    {% csrf_token %}
+    <label for="category">Select Category:</label>
+    <select name="category" id="category">
+      <option value="electronics" selected>Electronics</option>
+      <option value="fashion">Fashion</option>
+      <option value="home">Home</option>
+      <!-- Add more categories -->
+    </select>
+    <button type="submit">Fetch Deals</button>
+  </form>
+
     <section class="deals-section">
       <h2>Deals of the Day</h2>
       {% if deals_of_the_day %}
