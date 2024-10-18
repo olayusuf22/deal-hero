@@ -18,6 +18,7 @@
                 <img class="icon-stamp" src="{% static '/icons/Icon-7-Hero-Choice.png' %}" alt="Hero Choice Tag">
             </div>
             <section class='product-text-container'>
+                <h2 style="text-align: left;"><span style="color: #faf0f0;">${{ amz_best_product.price }}</span></h2>
                 <svg viewBox="0 0 1000 200" class='rating'>
                     <defs>
                         <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
@@ -32,14 +33,16 @@
                     <rect class='rating__background' clip-path="url(#stars)"></rect>
                     <rect width="{{ amz_best_product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
                 </svg>    
-                <p><strong>Price: </strong><span style="color: #faf0f0;">{{ amz_best_product.currency }} {{ amz_best_product.price }}</span></p>
                 <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ amz_best_product.rating }}</span></p>
                 <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ amz_best_product.reviews_count }}</span></p>
                 {% if amz_best_product.best_seller %}
-                    <p><strong>Best Seller</strong></p>
+                    <img class="badge" src="{% static '/icons/Icon-11-Best Seller.png' %}" alt="Best Seller">
                 {% endif %}
                 {% if amz_best_product.is_amazons_choice %}
-                    <p><strong>Amazon's Choice</strong></p>
+                    <img class="badge" src="{% static '/icons/Icon-10-Amazon Choice.png' %}" alt="Amazon's Choice Tag">
+                {% endif %}
+                {% if amz_best_product.is_prime %}
+                    <img class="badge" src="{% static '/icons/Icon-12-Prime.png' %}" alt="Amazon Prime Tag">
                 {% endif %}
                 <a class="no-hover-fx" href="https://www.amazon.com{{ amz_best_product.url }}">{% include "partials/buy_now_btn.html" %}</a>
                 <form action="{% url 'add-to-wishlist' amz_best_product.asin %}" method="post">
@@ -72,6 +75,7 @@
                                     <a href="https://www.amazon.com{{ product.url }}" target="_blank">View on Amazon</a>
                                 </div>
                                     <section class="description-text">
+                                        <h2 style="text-align: left;"><span style="color: #faf0f0;">${{ product.price }}</span></h2>
                                         <svg viewBox="0 0 1000 200" class='rating'>
                                             <defs>
                                                 <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
@@ -86,14 +90,16 @@
                                             <rect class='rating__background' clip-path="url(#stars)"></rect>
                                             <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
                                         </svg>
-                                        <p><strong>Price: </strong><span style="color: #faf0f0;">${{ product.price }}</span></p>
                                         <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
-                                        <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
+                                        <p>Reviews: <span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
                                         {% if product.best_seller %}
-                                            <p><strong>Best Seller</strong></p>
+                                            <img class="badge" src="{% static '/icons/Icon-11-Best Seller.png' %}" alt="Best Seller">
                                         {% endif %}
                                         {% if product.is_amazons_choice %}
-                                            <p><strong>Amazon's Choice</strong></p>
+                                            <img class="badge" src="{% static '/icons/Icon-10-Amazon Choice.png' %}" alt="Amazon's Choice Tag">
+                                        {% endif %}
+                                        {% if product.is_prime %}
+                                            <img class="badge" src="{% static '/icons/Icon-12-Prime.png' %}" alt="Amazon Prime Tag">
                                         {% endif %}
                                         <form action="{% url 'add-to-wishlist' product.asin %}" method="post">
                                             {% csrf_token %} 
@@ -126,7 +132,7 @@
                                         <a href="https://www.{{product.cleaned_merchant_name}}.com" target="_blank">Buy from {{ product.merchant.name }}</a>
                                 </div>
                                 <section class="description-text">
-                                    <p><strong>Price: </strong>{{ product.currency }} {{ product.price }}</p>
+                                    <h2 style="text-align: left;">${{ product.price }}</h2>
                                     <p><strong>Rating: </strong>{{ product.rating }}</p>
                                     <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
                                     <p><strong>Merchant: </strong>{{ product.merchant.name }}</p>
