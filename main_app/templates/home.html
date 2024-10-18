@@ -2,6 +2,7 @@
 {% load static %} {% block head %}
 <link rel="stylesheet" href="{% static 'css/parallax.css' %}" />
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/UIverse-imports.css' %}" />
 {% endblock %} 
 
 {% block content %}
@@ -54,7 +55,7 @@
         <option value="home">Home</option>
         <!-- Add more categories -->
       </select>
-      <button type="btn">Fetch Deals</button>
+      <button type="subtmit" class="btn">Fetch Deals</button>
     </form>
   </div>
 
