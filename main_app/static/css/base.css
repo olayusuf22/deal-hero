@@ -181,3 +181,9 @@ a:hover:before {
 .icon-and-legend img {
     height: 52px;
 }
+
+.badge {
+    width: 100px;
+    height: 21px;
+    margin: 4px;
+}

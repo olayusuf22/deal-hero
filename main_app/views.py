@@ -186,11 +186,6 @@ def product_search(request):
             if product.get('rating'):
                 product['rating_width'] = float(product['rating']) * 20
 
-        # Create a loop that prints out the first 5 ggl_sorted_products
-        print("\nTop 5 Google Shopping Products:")
-        for i, product in enumerate(ggl_sorted_products[:5], start=1):
-             print(f"{i}. Title: {product}")
-
         return render(request, 'products/products_index.html', {
             'amz_best_product': amz_best_product,
             'amz_products': amz_sorted_products,
@@ -237,8 +232,6 @@ def fetch_product_details(product_asin, user):
 
     # The rating_width is the value used to render the star ratings in the templates dynamically ⭐⭐⭐.
     rating_width = float(rating) * 20
-    # print the rating width
-    print(f'This is the rating_width: {rating_width}')
     
     retailer, created = Retailer.objects.get_or_create(name=retailer_name)      
     product, created = Product.objects.get_or_create(
@@ -411,12 +404,10 @@ def deals_of_the_day_init(request):
 
 def deals_of_the_day(request):
 
-    category = 'Home & Kitchen'
-    print(f'Deals of the Day for: {category}')
+    category = 'Electronics'
 
     if request.method == 'POST':
         category = request.POST.get('category', '')
-        print(f'You are in the for loop: {category}')
     
     payload = {
         'source': 'amazon_search',
