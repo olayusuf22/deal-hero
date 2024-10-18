@@ -1,15 +1,14 @@
 .parallax {
     position: relative;
     z-index: 0;
-    min-height: 100vh;
+    min-height: 75vh;
+    max-height: 90vh;
     display: grid;
     grid-template-areas: "stack";
 }
 
 .parallax > * {
     grid-area: stack;
-    animation: parallax linear;
-    animation-timeline: scroll();
     animation: parallax linear;
     animation-timeline: scroll();
 }
@@ -23,7 +22,7 @@
 }
 
 .parallax__moon {
-    --parallax-speed: -80;
+    --parallax-speed: -10;
     z-index: 2;
     width: 100%;
     position: absolute;
@@ -67,11 +66,6 @@
     z-index: 10;
 }
 
-.main-content {
-    position: relative;
-    background: linear-gradient(to right, #563d7c, #2a0845);
-}
-
 .slogan {
     display: flex;
     justify-content: center;
@@ -92,6 +86,15 @@
     background-color: rgba(69, 69, 69, 0.662);
     padding: 12px;
     border-radius: 12px;
+}
+
+.start-now-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 32px;
+    width: 100%;
 }
 
 @keyframes parallax {

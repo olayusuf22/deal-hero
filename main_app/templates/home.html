@@ -1,7 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %} {% block head %}
 <link rel="stylesheet" href="{% static 'css/parallax.css' %}" />
-{% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} 
+
+{% block content %}
 
 <section class='parallax'>
   <div class="hero-header">
@@ -25,11 +28,14 @@
     <div class="hero-description">
       <h3>Deal Hero is your superpower to track stock,<br>rescue the best deals,<br> and save BIG on the products you love.</h3>
     </div>
-    <h2>Get Started Now</h2>
-    {% include "partials/search_box.html" %}
+    <div class="start-now-container">
+      <h2>Get Started Now</h2>
+      <i class="fa-solid fa-angles-down fa-bounce fa-2xl" style="color: #FFD43B; margin-inline: auto; width: 80px; --fa-animation-delay: 6s; --fa-animation-iteration-count: 10"></i>
+      {% include "partials/search_box.html" %}
+      <h2>...or browse these amazing deals</h2>
+      <i class="fa-solid fa-angles-down fa-bounce fa-2xl" style="color: #FFD43B; margin-inline: auto; width: 80px; --fa-animation-delay: 6s; --fa-animation-iteration-count: 10"></i>
+    </div>
   </div>
-    
-  
   <img class="parallax__sky" src="../static/images/BG 1 - Sky.png" alt="Sky background" />
   <img class="parallax__moon" src="../static/images/BG 3 - Moon.png" alt="Moon background" />
   <img class="parallax__big_cloud" src="../static/images/BG 4 - Big Cloud.png" alt="Clouds background" />
@@ -37,7 +43,7 @@
   <img class="parallax__buildings" src="../static/images/BG 6 - Buildings.png" alt="Buildings background" />
 </section>
 
-<section class="main-content">
+<section id="main-content">
   <div class="category-selector">
     <form method="POST" action="{% url 'deals' %}">
       {% csrf_token %}
@@ -48,14 +54,15 @@
         <option value="home">Home</option>
         <!-- Add more categories -->
       </select>
-      <button type="submit">Fetch Deals</button>
+      <button type="btn">Fetch Deals</button>
     </form>
   </div>
 
   <div class="deals-container">
-    <h2>Deals of the Day</h2>
+    <h2>Biggest Deals of the Day</h2>
+    <h3>Sorted by percentage savings.</h3>
     {% if deals_of_the_day %}
-      <div class='other-options-carousel'>
+      <div class='other-options-carousel snaps-inline'>
         {% for deal in deals_of_the_day %}
         <div class='product-card'>
           <div class="product-titles">
@@ -63,6 +70,7 @@
           </div>
           <div class="product-img-container">
             <img class="product-image" src="{{ deal.url_image }}" alt="{{ deal.title }}">
+            <h3 class="savings-stamp">-{{deal.discount}}%</h3>
           </div>
           <div class="product-description">
             <div class="logo-container">
@@ -70,6 +78,7 @@
               <a href="https://www.amazon.com{{ deal.url }}" target="_blank">View on Amazon</a>
             </div>
                 <div class="description-text">
+                  <p style="font-size: larger"><strong>${{ deal.price }} </strong><span style="color: #faf0f0; font-size: medium"><em>List: $<del>{{ deal.strike_through_price }}</del></span></em></p>
                     <p><span style="color: #faf0f0; font-size: small;"><svg viewBox="0 0 1000 200" class='rating'>
                         <defs>
                             <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
@@ -84,7 +93,6 @@
                         <rect class='rating__background' clip-path="url(#stars)"></rect>
                         <rect width="{{ deal.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
                     </svg> ({{ deal.reviews_count }})</span></p>
-                    <p style="font-size: larger"><strong>${{ deal.price }} </strong><span style="color: #faf0f0; font-size: medium"><em>List: $<del>{{ deal.strike_through_price }}</del></span></em></p>
                     <p><strong>Save: </strong><span style="color: #faf0f0;">{{ deal.discount }}%</span></p>
                     <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ deal.rating }}</span></p>
                     {% if deal.best_seller %}
@@ -109,4 +117,3 @@
 </section>
 
 {% endblock %}
-
