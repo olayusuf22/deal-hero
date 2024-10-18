@@ -1,4 +1,4 @@
-# Travel Genie: dream destination itineraries, generated in seconds!
+# Meet your Shopping Sidekick: Deal Hero!
 
 ![Deal Hero](https://i.imgur.com/rOf6ilh.jpeg)
 
