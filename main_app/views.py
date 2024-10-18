@@ -411,10 +411,12 @@ def deals_of_the_day_init(request):
 
 def deals_of_the_day(request):
 
-    category = 'Home & Kitchen' 
+    category = 'Home & Kitchen'
+    print(f'Deals of the Day for: {category}')
 
     if request.method == 'POST':
         category = request.POST.get('category', '')
+        print(f'You are in the for loop: {category}')
     
     payload = {
         'source': 'amazon_search',
