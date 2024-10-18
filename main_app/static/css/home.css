@@ -74,12 +74,12 @@
         object-fit: contain;
         width: 100%;
         max-height: 100%;
-        position: relative
+        position: relative;
+        aspect-ratio: 1 / 1;
     }
 
     .product-image {
-        height: 100%;
-        max-height: 100%;
+        object-fit: scale-down;
     }
 
     .product-img-container > :first-child {
