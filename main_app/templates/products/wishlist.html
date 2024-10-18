@@ -15,31 +15,31 @@
             {% for item in wishlist_items %}
                 <div class='product-card'>
                     <div class="product-titles">
-                        <h3>{{ item.product_id.name }}</h3>
+                        <h3>{{ item.product.name }}</h3>
                     </div>
                 <div class="product-img-container">
-                    {% comment %} <a href="{% url 'product-detail' item.product_id.id %}"> {% endcomment %}
-                        <img src="{{ item.product_id.image_url }}" alt="{{ item.product_id.name }}">
+                    {% comment %} <a href="{% url 'product-detail' item.product.id %}"> {% endcomment %}
+                        <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
                     {% comment %} </a> {% endcomment %}
                     {% comment %} insert sold out img {% endcomment %}
-                    {% if not item.product_id.in_stock %}
+                    {% if not item.product.in_stock %}
                         <img class="sold-out-stamp" src="{% static 'icons/Icon-9-Sold-Out.png' %}" alt="Sold Out Icon" />
                     {% endif %}
                 </div>
                 <div class="wishlist-details-container">
                     <div class="description-and-links-container">
                         <section class="description-text">
-                            <p><strong>Current Price: </strong><span style="color: #faf0f0;">${{ item.product_id.current_price }}</span></p>
-                            <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ item.product_id.rating }}</span></p>
+                            <p><strong>Current Price: </strong><span style="color: #faf0f0;">${{ item.product.current_price }}</span></p>
+                            <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ item.product.rating }}</span></p>
                             <p><strong>Category: </strong><br>
-                                <span style="color: #faf0f0;">{{ item.product_id.category }}.</span></p>
-                            <p><strong>In Stock: </strong><span style="color: #faf0f0;">{% if item.product_id.in_stock %} Yes. {% else %} Sold Out. {% endif %}</span></p>
+                                <span style="color: #faf0f0;">{{ item.product.category }}.</span></p>
+                            <p><strong>In Stock: </strong><span style="color: #faf0f0;">{% if item.product.in_stock %} Yes. {% else %} Sold Out. {% endif %}</span></p>
                         </section>
                         <section class="action-links">
-                            <a class="no-hover-fx" href="{{ item.product_id.product_url }}" target="_blank">{% include "partials/buy_now_btn.html" %}</a>
-                            <a href="{% url 'product-detail' item.product_id.id %}"><i class="fa-solid fa-eye fa-xs" style="color: #FFD43B;"></i> View Details</a>
+                            <a class="no-hover-fx" href="{{ item.product.product_url }}" target="_blank">{% include "partials/buy_now_btn.html" %}</a>
+                            <a href="{% url 'product-detail' item.product.id %}"><i class="fa-solid fa-eye fa-xs" style="color: #FFD43B;"></i> View Details</a>
                             <a type="submit" class="remove-from-wishlist"
-                                href="{% url 'wishlist-delete' item.product_id.id %}"><i class="fa-solid fa-trash-can fa-xs" style="color: #FFD43B;"></i> Delete</a>
+                                href="{% url 'wishlist-delete' item.id %}"><i class="fa-solid fa-trash-can fa-xs" style="color: #FFD43B;"></i> Delete</a>
                         </section>
                     </div>
                 </div>

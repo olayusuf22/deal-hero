@@ -1,4 +1,12 @@
 .product-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main-info {
     background-image: url('../images/BG\ 1\ -\ Sky.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -7,24 +15,35 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
-
 
 .product-title {
     display: flex;
-    width: 100%;
+    width: 85svw;
     margin-top: 24px;
     justify-content: center;
 }
 
+.product-title h2 {
+    text-align: center;
+}
+
 .product-and-details-container {
     display: flex;
-    width: 92vw;
+    width: 85svw;
     justify-content: space-evenly;
+    row-gap: 12px;
     column-gap: 12px;
     flex-wrap: wrap;
     margin-bottom: 24px;
     align-items: flex-start;
+}
+
+#price-history-graph {
+    border-radius: 12px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.85);
+    overflow: hidden;
 }
 
 
@@ -62,31 +81,59 @@
 }
 
 .about-this-item-card {
-    max-width: 80cqh;
     padding: 12px;
     line-height: 1.5;
     background: linear-gradient(to right, #acacac79, rgba(107, 107, 107, 0.45));
     border-radius: 12px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.85);
+    height: fit-content;
 }
 
-.more-images-container {
+.more-images-carousel {
     display: flex;
+    align-items: flex-start;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    column-gap: 8px;
     padding: 12px;
     background-color: white;
+    max-width: 100svw;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: gold purple;
+    overscroll-behavior-inline: contain;
 }
 
-.more-images-container img {
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 2rem;
+}
+
+.snaps-inline > * {
+ scroll-snap-align: start;
+}
+
+.more-images-carousel img {
     max-width: 250px;
     max-height: 250px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
 }
 
 .more-details-container {
-   display: flex;
-   justify-content: space-evenly;
-   
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    column-gap: 12px;
+    padding: 32px;
+    width: 85svw;
+}
+
+.center-image{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .text-details-card {

@@ -13,15 +13,21 @@
         <h1 class="form-title">Log In</h1>
       </div>
         <form class="login-form" action="{% url 'home' %}" method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <button class="btn" type="submit">▶ Log In</button>
+          {% csrf_token %} {{ form.as_p }}
+          <input type="hidden" name="next" value="{{ next }}" />
+          <button class="btn" type="submit">▶ Log In</button>
       </form>
       <div class="signup-link-container">
         <p> Not a hero yet?</p>
         <a href="{% url 'signup' %}"> Sign up!</a>
       </div>
     </section>
+  {% endif %}
+  {% if user.is_authenticated %}
+    <div class="login-container">
+      <p>You are already logged in, {{ user.username }}!</p>
+      <a href="{% url 'logout' %}">Logout?</a>
+    </div>
   {% endif %}
 </div>
 {% endblock %}

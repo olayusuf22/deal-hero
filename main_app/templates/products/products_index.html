@@ -7,9 +7,9 @@
 
 <div class='results-wrapper'>
 
-    <div class="product-card">
-        <div class="product-titles">
-            <h1>Best Option</h1>
+    <div class="best-product-card">
+        <div class="best-product-titles">
+            <h1>Hero Option</h1>
             <h2>{{ amz_best_product.title }}</h2>
         </div>
         <div class="details-container">
@@ -18,6 +18,7 @@
                 <img class="icon-stamp" src="{% static '/icons/Icon-7-Hero-Choice.png' %}" alt="Hero Choice Tag">
             </div>
             <section class='product-text-container'>
+                <h2 style="text-align: left;"><span style="color: #faf0f0;">${{ amz_best_product.price }}</span></h2>
                 <svg viewBox="0 0 1000 200" class='rating'>
                     <defs>
                         <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
@@ -32,16 +33,17 @@
                     <rect class='rating__background' clip-path="url(#stars)"></rect>
                     <rect width="{{ amz_best_product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
                 </svg>    
-                <p><strong>Price: </strong><span style="color: #faf0f0;">{{ amz_best_product.currency }} {{ amz_best_product.price }}</span></p>
                 <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ amz_best_product.rating }}</span></p>
                 <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ amz_best_product.reviews_count }}</span></p>
                 {% if amz_best_product.best_seller %}
-                    <p><strong>Best Seller</strong></p>
+                    <img class="badge" src="{% static '/icons/Icon-11-Best Seller.png' %}" alt="Best Seller">
                 {% endif %}
                 {% if amz_best_product.is_amazons_choice %}
-                    <p><strong>Amazon's Choice</strong></p>
+                    <img class="badge" src="{% static '/icons/Icon-10-Amazon Choice.png' %}" alt="Amazon's Choice Tag">
                 {% endif %}
-                <p><strong> Product ID: </strong><span style="color: #faf0f0;">{{ amz_best_product.asin }}</span></p>
+                {% if amz_best_product.is_prime %}
+                    <img class="badge" src="{% static '/icons/Icon-12-Prime.png' %}" alt="Amazon Prime Tag">
+                {% endif %}
                 <a class="no-hover-fx" href="https://www.amazon.com{{ amz_best_product.url }}">{% include "partials/buy_now_btn.html" %}</a>
                 <form action="{% url 'add-to-wishlist' amz_best_product.asin %}" method="post">
                     {% csrf_token %} 
@@ -51,83 +53,96 @@
         </div>
     </div>
 
-    <h1>Other Amazon Options</h1>
-    <div class='other-options-carousel'>
-        {% for product in amz_products %}
-        {% if product != amz_best_product %}
-            <div class='product-card'>
-                    <div class="product-titles">
-                        <h3>{{ product.title }}</h2>
-                    </div>
-                    <div class="product-img-container">
-                        <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">
-                    </div>
-                    <section class="product-description">
-                        <div class="logo-container">
-                            <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
-                            <a href="https://www.amazon.com{{ product.url }}">View on Amazon</a>
-                        </div>
-                            <section class="description-text">
-                                <svg viewBox="0 0 1000 200" class='rating'>
-                                    <defs>
-                                        <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
-                                        <clipPath id="stars">
-                                            <use xlink:href="#star"/>
-                                            <use xlink:href="#star" x="20%"/>
-                                            <use xlink:href="#star" x="40%"/>
-                                            <use xlink:href="#star" x="60%"/>
-                                            <use xlink:href="#star" x="80%"/>
-                                        </clipPath>
-                                    </defs>
-                                    <rect class='rating__background' clip-path="url(#stars)"></rect>
-                                    <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
-                                </svg>
-                                <p><strong>Price: </strong><span style="color: #faf0f0;">${{ product.price }}</span></p>
-                                <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
-                                <p><strong>Reviews: </strong><span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
-                                {% if product.best_seller %}
-                                    <p><strong>Best Seller</strong></p>
-                                {% endif %}
-                                {% if product.is_amazons_choice %}
-                                    <p><strong>Amazon's Choice</strong></p>
-                                {% endif %}
-                                <p><strong> Product ID: </strong><span style="color: #faf0f0;">{{ product.asin }}</span></p>
-                                <form action="{% url 'add-to-wishlist' product.asin %}" method="post">
-                                    {% csrf_token %} 
-                                    {% include "partials/add_to_wishlist_btn.html" %}
-                                </form>
+    <section class="other-options-container">
+        
+        <section class='amazon-options-container'>
+            <div class="other-options-title">
+                <h2>Explore Other Great Options from Amazon</h2>
+            </div>
+            <div class='other-options-carousel snaps-inline'>
+                {% for product in amz_products %}
+                {% if product != amz_best_product %}
+                    <div class='product-card'>
+                            <div class="product-titles">
+                                <h3>{{ product.title }}</h2>
+                            </div>
+                            <div class="product-img-container">
+                                <img class="product-image" src="{{ product.url_image }}" alt="{{ product.title }}">
+                            </div>
+                            <section class="product-description">
+                                <div class="logo-container">
+                                    <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
+                                    <a href="https://www.amazon.com{{ product.url }}" target="_blank">View on Amazon</a>
+                                </div>
+                                    <section class="description-text">
+                                        <h2 style="text-align: left;"><span style="color: #faf0f0;">${{ product.price }}</span></h2>
+                                        <svg viewBox="0 0 1000 200" class='rating'>
+                                            <defs>
+                                                <polygon id="star" points="100,0 131,66 200,76 150,128 162,200 100,166 38,200 50,128 0,76 69,66 "/>
+                                                <clipPath id="stars">
+                                                    <use xlink:href="#star"/>
+                                                    <use xlink:href="#star" x="20%"/>
+                                                    <use xlink:href="#star" x="40%"/>
+                                                    <use xlink:href="#star" x="60%"/>
+                                                    <use xlink:href="#star" x="80%"/>
+                                                </clipPath>
+                                            </defs>
+                                            <rect class='rating__background' clip-path="url(#stars)"></rect>
+                                            <rect width="{{ product.rating_width }}%" class='rating__value' clip-path="url(#stars)"></rect>
+                                        </svg>
+                                        <p><strong>Rating: </strong><span style="color: #faf0f0;">{{ product.rating }}</span></p>
+                                        <p>Reviews: <span style="color: #faf0f0;">{{ product.reviews_count }}</span></p>
+                                        {% if product.best_seller %}
+                                            <img class="badge" src="{% static '/icons/Icon-11-Best Seller.png' %}" alt="Best Seller">
+                                        {% endif %}
+                                        {% if product.is_amazons_choice %}
+                                            <img class="badge" src="{% static '/icons/Icon-10-Amazon Choice.png' %}" alt="Amazon's Choice Tag">
+                                        {% endif %}
+                                        {% if product.is_prime %}
+                                            <img class="badge" src="{% static '/icons/Icon-12-Prime.png' %}" alt="Amazon Prime Tag">
+                                        {% endif %}
+                                        <form action="{% url 'add-to-wishlist' product.asin %}" method="post">
+                                            {% csrf_token %} 
+                                            {% include "partials/add_to_wishlist_btn.html" %}
+                                        </form>
+                                    </section>
                             </section>
-                    </section>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-
-    <h1>Other Google Shopping Options</h1>
-    <div class='other-options-carousel'>
-            {% for product in ggl_products %}
-                <div class='product-card'>
-                    <div class="product-titles">
-                        <h3>{{ product.title }}</h2>
-                        <img class="product-image" src="data:image/jpeg;base64,{{ product.thumbnail }}" alt="{{ product.title }}">
-                    </div>
-                    <div class="product-description">
-                        <div class="logo-container">
-                                <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
-                                <a href="https://www.google.com{{ product.url }}">Buy from {{ product.merchant.name }}</a>
                         </div>
-                        <section class="description-text">
-                            <p><strong>Price: </strong>{{ product.currency }} {{ product.price }}</p>
-                            <p><strong>Rating: </strong>{{ product.rating }}</p>
-                            <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
-                            <p><strong>Merchant: </strong>{{ product.merchant.name }}</p>
-                            <p><strong> Product ID: </strong>{{ product_id }}</p>
-                            {% comment %} <a href="{% url 'fetch-product-details' product.product_id %}" class="add-to-wishlist">Add To WishList</a> {% endcomment %}
-                        </section>
-                    </div>
-                </div>
-            {% endfor %}
-    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="google-shopping-options-container">
+            <div class="other-options-title">
+                <h2>Compare to Options from Other Retailers</h2>
+            </div>
+            <div class='other-options-carousel snaps-inline'>
+                    {% for product in ggl_products %}
+                        <div class='product-card'>
+                            <div class="product-titles">
+                                <h3>{{ product.title }}</h2>
+                                </div>
+                                <div class="product-img-container">
+                                    <img class="product-image" src="data:image/jpeg;base64,{{ product.thumbnail }}" alt="{{ product.title }}">
+                                </div>
+                            <div class="product-description">
+                                <div class="logo-container">
+                                        <img  class="merchant-logo" src="{{ product.logo_url }}" alt="{{ product.merchant.name }} logo" width="80">
+                                        <a href="https://www.{{product.cleaned_merchant_name}}.com" target="_blank">Buy from {{ product.merchant.name }}</a>
+                                </div>
+                                <section class="description-text">
+                                    <h2 style="text-align: left;">${{ product.price }}</h2>
+                                    <p><strong>Rating: </strong>{{ product.rating }}</p>
+                                    <p><strong>Reviews: </strong>{{ product.reviews_count }}</p>
+                                    <p><strong>Merchant: </strong>{{ product.merchant.name }}</p>
+                                </section>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </section>
+    </section>
 
 </div>
 {% endblock %}
